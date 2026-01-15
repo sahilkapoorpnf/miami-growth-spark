@@ -1611,7 +1611,7 @@
         
         /* Print */
         @media print {
-            .navigation, .header, .blob, .hero-bg-elements { display: none !important; }
+            .navigation, .header, .blob, .hero-bg-elements, .slide-bg-elements { display: none !important; }
             .slide { page-break-after: always; }
             body { background: white !important; }
         }
@@ -1623,6 +1623,838 @@
             .header img { height: 28px; }
             .hero-image { max-width: 280px; max-height: 180px; }
             .blob { display: none; }
+        }
+        
+        /* ========== ENHANCED SLIDE STYLES ========== */
+        
+        /* Shared slide background elements */
+        .slide-bg-elements {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .slide-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+        
+        .slide-blob-pink {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(249, 115, 22, 0.3));
+            animation: blobFloat1 10s ease-in-out infinite;
+        }
+        
+        .slide-blob-blue {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.35), rgba(34, 211, 238, 0.25));
+            animation: blobFloat2 12s ease-in-out infinite;
+        }
+        
+        .slide-blob-gold {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.4), rgba(249, 115, 22, 0.3));
+            animation: blobFloat3 8s ease-in-out infinite;
+        }
+        
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 30px) scale(1.1); }
+        }
+        
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.05); }
+        }
+        
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-15px, 15px) rotate(5deg); }
+        }
+        
+        /* Enhanced slide layout */
+        .slide-layout {
+            position: relative;
+            z-index: 10;
+            min-height: calc(100vh - 140px);
+            padding: 90px 50px 110px;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .slide-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--miami-pink);
+            border: 2px solid rgba(236, 72, 153, 0.2);
+            box-shadow: 0 8px 32px rgba(236, 72, 153, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+        }
+        
+        .slide-badge-icon {
+            font-size: 18px;
+        }
+        
+        .slide-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+        
+        .slide-title .gradient-highlight {
+            background: linear-gradient(135deg, var(--miami-pink), #f472b6, var(--miami-pink-light));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        .slide-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Enhanced cards with 3D effect */
+        .enhanced-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08), 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--miami-pink), var(--miami-pink-light));
+        }
+        
+        .enhanced-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(236, 72, 153, 0.15), 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Split layout for visual variety */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        /* Floating decorative elements */
+        .float-element {
+            position: absolute;
+            animation: floatElement 6s ease-in-out infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Enhanced search box */
+        .search-term-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,245,240,0.95));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(236, 72, 153, 0.15);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+        
+        .search-term-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .search-term-header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 24px rgba(8, 145, 178, 0.3);
+        }
+        
+        .search-term-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .search-term-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .search-term-item:hover {
+            padding-left: 10px;
+        }
+        
+        .search-term-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-term-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--miami-pink), var(--miami-pink-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+        
+        .search-term-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        /* Problem/gap cards */
+        .gap-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        
+        .gap-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+        }
+        
+        .gap-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .gap-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .gap-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        /* Solution grid cards */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        @media (max-width: 900px) {
+            .solution-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .solution-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.9));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .solution-item:nth-child(1)::before { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+        .solution-item:nth-child(2)::before { background: linear-gradient(90deg, #ec4899, #f472b6); }
+        .solution-item:nth-child(3)::before { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .solution-item:nth-child(4)::before { background: linear-gradient(90deg, #f97316, #fb923c); }
+        .solution-item:nth-child(5)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .solution-item:nth-child(6)::before { background: linear-gradient(90deg, #eab308, #fbbf24); }
+        
+        .solution-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.12);
+        }
+        
+        .solution-item:nth-child(1):hover { box-shadow: 0 25px 70px rgba(8, 145, 178, 0.2); }
+        .solution-item:nth-child(2):hover { box-shadow: 0 25px 70px rgba(236, 72, 153, 0.2); }
+        .solution-item:nth-child(3):hover { box-shadow: 0 25px 70px rgba(34, 197, 94, 0.2); }
+        .solution-item:nth-child(4):hover { box-shadow: 0 25px 70px rgba(249, 115, 22, 0.2); }
+        .solution-item:nth-child(5):hover { box-shadow: 0 25px 70px rgba(139, 92, 246, 0.2); }
+        .solution-item:nth-child(6):hover { box-shadow: 0 25px 70px rgba(234, 179, 8, 0.2); }
+        
+        .solution-icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 18px;
+            transition: all 0.3s;
+        }
+        
+        .solution-item:hover .solution-icon-wrap {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .solution-item h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .solution-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        /* Audit score cards */
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .audit-score-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audit-score-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .audit-score-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .audit-score-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .audit-score-value {
+            font-size: 36px;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .audit-score-value.bad { color: #ef4444; }
+        .audit-score-value.medium { color: #f59e0b; }
+        .audit-score-value.good { color: #22c55e; }
+        
+        .audit-progress {
+            height: 10px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .audit-progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Package cards enhanced */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        
+        @media (max-width: 1000px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+        
+        .package-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 36px 28px;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .package-item.pkg-simple::before { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+        .package-item.pkg-advanced::before { background: linear-gradient(90deg, #eab308, #fbbf24); }
+        .package-item.pkg-gold::before { background: linear-gradient(90deg, #f97316, #fb923c); }
+        
+        .package-item:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+        
+        .package-item.pkg-simple:hover { box-shadow: 0 30px 80px rgba(8, 145, 178, 0.25); border-color: rgba(8, 145, 178, 0.3); }
+        .package-item.pkg-advanced:hover { box-shadow: 0 30px 80px rgba(234, 179, 8, 0.25); border-color: rgba(234, 179, 8, 0.3); }
+        .package-item.pkg-gold:hover { box-shadow: 0 30px 80px rgba(249, 115, 22, 0.25); border-color: rgba(249, 115, 22, 0.3); }
+        
+        .package-tier {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .pkg-simple .package-tier { color: #0891b2; }
+        .pkg-advanced .package-tier { color: #d97706; }
+        .pkg-gold .package-tier { color: #ea580c; }
+        
+        .package-amount {
+            font-size: 48px;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+        
+        .package-amount span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: normal;
+        }
+        
+        .package-list {
+            list-style: none;
+        }
+        
+        .package-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .package-list li:last-child { border-bottom: none; }
+        
+        .package-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .pkg-simple .package-check { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+        .pkg-advanced .package-check { background: linear-gradient(135deg, #eab308, #fbbf24); }
+        .pkg-gold .package-check { background: linear-gradient(135deg, #f97316, #fb923c); }
+        
+        /* Timeline enhanced */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            position: relative;
+        }
+        
+        .timeline-grid::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #f97316);
+            border-radius: 4px;
+            z-index: 0;
+        }
+        
+        @media (max-width: 900px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-grid::before {
+                display: none;
+            }
+        }
+        
+        .timeline-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 28px;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            border-radius: 24px 24px 0 0;
+        }
+        
+        .timeline-item.tl-month1::before { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .timeline-item.tl-month2::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .timeline-item.tl-month3::before { background: linear-gradient(90deg, #f97316, #fb923c); }
+        
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .timeline-item.tl-month1:hover { box-shadow: 0 25px 70px rgba(34, 197, 94, 0.2); }
+        .timeline-item.tl-month2:hover { box-shadow: 0 25px 70px rgba(59, 130, 246, 0.2); }
+        .timeline-item.tl-month3:hover { box-shadow: 0 25px 70px rgba(249, 115, 22, 0.2); }
+        
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .timeline-icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .tl-month1 .timeline-icon-wrap { background: rgba(34, 197, 94, 0.15); }
+        .tl-month2 .timeline-icon-wrap { background: rgba(59, 130, 246, 0.15); }
+        .tl-month3 .timeline-icon-wrap { background: rgba(249, 115, 22, 0.15); }
+        
+        .timeline-info h3 {
+            font-size: 20px;
+            font-weight: 800;
+        }
+        
+        .timeline-info span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .timeline-list {
+            list-style: none;
+        }
+        
+        .timeline-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .timeline-list li::before {
+            content: '→';
+            font-weight: bold;
+        }
+        
+        .tl-month1 .timeline-list li::before { color: #22c55e; }
+        .tl-month2 .timeline-list li::before { color: #3b82f6; }
+        .tl-month3 .timeline-list li::before { color: #f97316; }
+        
+        /* Results stats */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 800px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .result-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--miami-pink), var(--miami-pink-light));
+        }
+        
+        .result-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 25px 70px rgba(236, 72, 153, 0.15);
+        }
+        
+        .result-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .result-value {
+            font-size: 36px;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 700px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .compare-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 36px 32px;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .compare-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .compare-card.compare-bad::before { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .compare-card.compare-good::before { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        
+        .compare-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .compare-card.compare-bad:hover { box-shadow: 0 25px 70px rgba(239, 68, 68, 0.15); }
+        .compare-card.compare-good:hover { box-shadow: 0 25px 70px rgba(34, 197, 94, 0.2); }
+        
+        .compare-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .compare-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .compare-bad .compare-icon { background: rgba(239, 68, 68, 0.1); }
+        .compare-good .compare-icon { background: rgba(34, 197, 94, 0.1); }
+        
+        .compare-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .compare-list {
+            list-style: none;
+        }
+        
+        .compare-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .compare-list li:last-child { border-bottom: none; }
+        
+        .compare-x {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .compare-check {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -1742,44 +2574,76 @@
             <!-- Slide 2: Problem -->
             <section class="slide" data-slide="2">
                 <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
-                <div class="blob blob-1"></div>
-                <div class="blob blob-3"></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-pink" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+                    <div class="slide-blob slide-blob-blue" style="width: 300px; height: 300px; bottom: -80px; left: -80px;"></div>
+                    <div class="float-element" style="top: 20%; left: 8%; font-size: 32px; animation-delay: 0s;">🔍</div>
+                    <div class="float-element" style="top: 35%; right: 12%; font-size: 28px; animation-delay: 1s;">⚠️</div>
+                    <div class="float-element" style="bottom: 25%; left: 15%; font-size: 24px; animation-delay: 2s;">📊</div>
+                </div>
                 <div class="slide-scroll">
-                    <div class="slide-content">
-                    <span class="badge">The Challenge</span>
-                    <h1 class="title">Why SEO Matters <span class="highlight">Right Now</span></h1>
-                    <p class="subtitle">Pet owners in Miami search Google daily. If you're not on page 1, your competitors are getting those customers.</p>
-                    
-                    <div class="grid-2">
-                        <div class="search-box">
-                            <h3>🔍 Top Search Terms in Miami</h3>
-                            <ul class="term-list">
-                                <li><span class="term-num">1</span> "dog grooming near me"</li>
-                                <li><span class="term-num">2</span> "pet grooming Miami"</li>
-                                <li><span class="term-num">3</span> "mobile dog groomer Miami"</li>
-                                <li><span class="term-num">4</span> "puppy grooming"</li>
-                                <li><span class="term-num">5</span> "pet spa Miami"</li>
-                            </ul>
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">⚡</span>
+                                <span>The Challenge</span>
+                            </div>
+                            <h1 class="slide-title">Why SEO Matters <span class="gradient-highlight">Right Now</span></h1>
+                            <p class="slide-subtitle">Pet owners in Miami search Google daily. If you're not on page 1, your competitors are getting those customers.</p>
                         </div>
                         
-                        <div class="glass-card">
-                            <h3 style="font-size: 16px; margin-bottom: 16px; font-weight: 700;">⚠️ Current Website Gaps</h3>
-                            <div style="font-size: 14px;">
-                                <div style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <span style="color: #ef4444; font-size: 18px;">✕</span>
-                                    <div><strong>No Keyword Strategy</strong><br><span style="color: var(--text-muted); font-size: 13px;">Missing targeted keywords for Miami searches</span></div>
+                        <div class="split-layout">
+                            <div class="search-term-card">
+                                <div class="search-term-header">
+                                    <div class="search-term-header-icon">🔍</div>
+                                    <h3>Top Search Terms in Miami</h3>
                                 </div>
-                                <div style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <span style="color: #ef4444; font-size: 18px;">✕</span>
-                                    <div><strong>Google Maps Gap</strong><br><span style="color: var(--text-muted); font-size: 13px;">Not optimized for local map rankings</span></div>
+                                <div class="search-term-item">
+                                    <span class="search-term-num">1</span>
+                                    <span class="search-term-text">"dog grooming near me"</span>
                                 </div>
-                                <div style="display: flex; gap: 12px; padding: 12px 0;">
-                                    <span style="color: #ef4444; font-size: 18px;">✕</span>
-                                    <div><strong>No Backlink Authority</strong><br><span style="color: var(--text-muted); font-size: 13px;">Limited domain authority signals</span></div>
+                                <div class="search-term-item">
+                                    <span class="search-term-num">2</span>
+                                    <span class="search-term-text">"pet grooming Miami"</span>
+                                </div>
+                                <div class="search-term-item">
+                                    <span class="search-term-num">3</span>
+                                    <span class="search-term-text">"mobile dog groomer Miami"</span>
+                                </div>
+                                <div class="search-term-item">
+                                    <span class="search-term-num">4</span>
+                                    <span class="search-term-text">"puppy grooming"</span>
+                                </div>
+                                <div class="search-term-item">
+                                    <span class="search-term-num">5</span>
+                                    <span class="search-term-text">"pet spa Miami"</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="gap-card">
+                                    <div class="gap-icon">❌</div>
+                                    <div class="gap-content">
+                                        <h4>No Keyword Strategy</h4>
+                                        <p>Missing targeted keywords for Miami searches</p>
+                                    </div>
+                                </div>
+                                <div class="gap-card">
+                                    <div class="gap-icon">🗺️</div>
+                                    <div class="gap-content">
+                                        <h4>Google Maps Gap</h4>
+                                        <p>Not optimized for local map rankings</p>
+                                    </div>
+                                </div>
+                                <div class="gap-card">
+                                    <div class="gap-icon">🔗</div>
+                                    <div class="gap-content">
+                                        <h4>No Backlink Authority</h4>
+                                        <p>Limited domain authority signals</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </section>
@@ -1787,49 +2651,54 @@
             <!-- Slide 3: Solution -->
             <section class="slide" data-slide="3">
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
-                <div class="blob blob-2"></div>
-                <div class="blob blob-3"></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-blue" style="width: 450px; height: 450px; top: -120px; left: -120px;"></div>
+                    <div class="slide-blob slide-blob-pink" style="width: 350px; height: 350px; bottom: -100px; right: -100px;"></div>
+                    <div class="float-element" style="top: 15%; right: 10%; font-size: 36px; animation-delay: 0.5s;">🚀</div>
+                    <div class="float-element" style="bottom: 30%; left: 8%; font-size: 28px; animation-delay: 1.5s;">💡</div>
+                </div>
                 <div class="slide-scroll">
-                    <div class="slide-content">
-                        <span class="badge">Our Approach</span>
-                        <h1 class="title">How <span class="highlight">Bitdecentro</span> Will Help</h1>
-                        <p class="subtitle">We'll turn your website into a lead-generating machine using proven digital strategies</p>
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">🎯</span>
+                                <span>Our Approach</span>
+                            </div>
+                            <h1 class="slide-title">How <span class="gradient-highlight">Bitdecentro</span> Will Help</h1>
+                            <p class="slide-subtitle">We'll turn your website into a lead-generating machine using proven digital strategies</p>
+                        </div>
                         
-                        <div class="grid-3">
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(8, 145, 178, 0.15);">📍</div>
+                        <div class="solution-grid">
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(8, 145, 178, 0.12);">📍</div>
                                 <h4>Local SEO</h4>
                                 <p>Google Maps & Miami-focused optimization</p>
                             </div>
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(236, 72, 153, 0.15);">🎯</div>
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(236, 72, 153, 0.12);">🎯</div>
                                 <h4>Keyword Strategy</h4>
                                 <p>Target high-value pet grooming keywords</p>
                             </div>
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(34, 197, 94, 0.15);">🔗</div>
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(34, 197, 94, 0.12);">🔗</div>
                                 <h4>Authority Building</h4>
                                 <p>Quality backlinks from trusted sources</p>
                             </div>
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(249, 115, 22, 0.15);">💰</div>
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(249, 115, 22, 0.12);">💰</div>
                                 <h4>Conversion Boost</h4>
                                 <p>Turn visitors into paying customers</p>
                             </div>
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(139, 92, 246, 0.15);">📱</div>
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(139, 92, 246, 0.12);">📱</div>
                                 <h4>Social Visibility</h4>
                                 <p>Instagram & Facebook presence</p>
                             </div>
-                            <div class="solution-card">
-                                <div class="solution-icon" style="background: rgba(234, 179, 8, 0.15);">⚡</div>
+                            <div class="solution-item">
+                                <div class="solution-icon-wrap" style="background: rgba(234, 179, 8, 0.12);">⚡</div>
                                 <h4>Paid Ads</h4>
                                 <p>Instant leads with Google Ads</p>
                             </div>
-                        </div>
-                        
-                        <div class="pet-image-container mt-3">
-                            <img src="images/grooming-tools.jpg" alt="Grooming Tools" class="inline-image">
                         </div>
                     </div>
                 </div>
@@ -1838,39 +2707,68 @@
             <!-- Slide 4: Audit -->
             <section class="slide" data-slide="4">
                 <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
-                <div class="blob blob-1"></div>
-                <div class="slide-content">
-                    <span class="badge">Website Audit</span>
-                    <h1 class="title">Current <span class="highlight">Performance</span> Analysis</h1>
-                    <p class="subtitle">Based on SEOptimer analysis of miamispetgrooming.com</p>
-                    
-                    <div class="flex-row">
-                        <div class="flex-col">
-                            <div class="grid-2" style="max-width: 450px;">
-                                <div class="audit-card">
-                                    <h4>Overall SEO</h4>
-                                    <div class="audit-score medium">C+</div>
-                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 55%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-gold" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+                    <div class="slide-blob slide-blob-pink" style="width: 300px; height: 300px; bottom: -80px; left: -80px;"></div>
+                    <div class="float-element" style="top: 18%; left: 10%; font-size: 32px; animation-delay: 0s;">📊</div>
+                    <div class="float-element" style="bottom: 35%; right: 8%; font-size: 28px; animation-delay: 1s;">🔬</div>
+                </div>
+                <div class="slide-scroll">
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">📋</span>
+                                <span>Website Audit</span>
+                            </div>
+                            <h1 class="slide-title">Current <span class="gradient-highlight">Performance</span> Analysis</h1>
+                            <p class="slide-subtitle">Based on SEOptimer analysis of miamispetgrooming.com</p>
+                        </div>
+                        
+                        <div class="split-layout">
+                            <div class="audit-grid">
+                                <div class="audit-score-card">
+                                    <div class="audit-score-header">
+                                        <span class="audit-score-label">Overall SEO</span>
+                                        <span class="audit-score-value medium">C+</span>
+                                    </div>
+                                    <div class="audit-progress">
+                                        <div class="audit-progress-bar" style="width: 55%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                                    </div>
                                 </div>
-                                <div class="audit-card">
-                                    <h4>On-Page SEO</h4>
-                                    <div class="audit-score bad">42%</div>
-                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 42%; background: linear-gradient(90deg, #ef4444, #f87171);"></div></div>
+                                <div class="audit-score-card">
+                                    <div class="audit-score-header">
+                                        <span class="audit-score-label">On-Page SEO</span>
+                                        <span class="audit-score-value bad">42%</span>
+                                    </div>
+                                    <div class="audit-progress">
+                                        <div class="audit-progress-bar" style="width: 42%; background: linear-gradient(90deg, #ef4444, #f87171);"></div>
+                                    </div>
                                 </div>
-                                <div class="audit-card">
-                                    <h4>Mobile Usability</h4>
-                                    <div class="audit-score medium">68%</div>
-                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 68%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+                                <div class="audit-score-card">
+                                    <div class="audit-score-header">
+                                        <span class="audit-score-label">Mobile Usability</span>
+                                        <span class="audit-score-value medium">68%</span>
+                                    </div>
+                                    <div class="audit-progress">
+                                        <div class="audit-progress-bar" style="width: 68%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                                    </div>
                                 </div>
-                                <div class="audit-card">
-                                    <h4>Page Speed</h4>
-                                    <div class="audit-score medium">71%</div>
-                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 71%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+                                <div class="audit-score-card">
+                                    <div class="audit-score-header">
+                                        <span class="audit-score-label">Page Speed</span>
+                                        <span class="audit-score-value medium">71%</span>
+                                    </div>
+                                    <div class="audit-progress">
+                                        <div class="audit-progress-bar" style="width: 71%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pet-image-container">
-                            <img src="images/google-maps-ranking.jpg" alt="Google Maps" class="inline-image">
+                            
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <div style="position: relative; padding: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                                    <img src="images/google-maps-ranking.jpg" alt="Google Maps" style="width: 100%; max-width: 320px; border-radius: 16px; display: block;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1879,51 +2777,60 @@
             <!-- Slide 5: Packages -->
             <section class="slide" data-slide="5">
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
-                <div class="blob blob-2"></div>
-                <div class="blob blob-3"></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-blue" style="width: 500px; height: 500px; top: -150px; left: -150px;"></div>
+                    <div class="slide-blob slide-blob-gold" style="width: 400px; height: 400px; bottom: -120px; right: -120px;"></div>
+                    <div class="float-element" style="top: 12%; right: 15%; font-size: 36px; animation-delay: 0s;">💎</div>
+                    <div class="float-element" style="bottom: 20%; left: 10%; font-size: 32px; animation-delay: 1.2s;">🏆</div>
+                </div>
                 <div class="slide-scroll">
-                    <div class="slide-content">
-                        <span class="badge">Investment Options</span>
-                        <h1 class="title">Our SEO <span class="highlight">Packages</span></h1>
-                        <p class="subtitle">Choose the plan that fits your growth goals</p>
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">💰</span>
+                                <span>Investment Options</span>
+                            </div>
+                            <h1 class="slide-title">Our SEO <span class="gradient-highlight">Packages</span></h1>
+                            <p class="slide-subtitle">Choose the plan that fits your growth goals</p>
+                        </div>
                         
-                        <div class="grid-3">
-                            <div class="package-card simple">
-                                <div class="package-name">Simple SEO</div>
-                                <div class="package-price">$499<span>/month</span></div>
-                                <ul class="package-features">
-                                    <li><span class="check-icon">✓</span> On-Page SEO</li>
-                                    <li><span class="check-icon">✓</span> 10-15 Keywords</li>
-                                    <li><span class="check-icon">✓</span> Meta Optimization</li>
-                                    <li><span class="check-icon">✓</span> Google Business</li>
-                                    <li><span class="check-icon">✓</span> Monthly Backlinks</li>
-                                    <li><span class="check-icon">✓</span> Ranking Reports</li>
+                        <div class="packages-grid">
+                            <div class="package-item pkg-simple">
+                                <div class="package-tier">Simple SEO</div>
+                                <div class="package-amount">$499<span>/month</span></div>
+                                <ul class="package-list">
+                                    <li><span class="package-check">✓</span> On-Page SEO</li>
+                                    <li><span class="package-check">✓</span> 10-15 Keywords</li>
+                                    <li><span class="package-check">✓</span> Meta Optimization</li>
+                                    <li><span class="package-check">✓</span> Google Business</li>
+                                    <li><span class="package-check">✓</span> Monthly Backlinks</li>
+                                    <li><span class="package-check">✓</span> Ranking Reports</li>
                                 </ul>
                             </div>
                             
-                            <div class="package-card advanced">
-                                <div class="package-name">Advanced Growth</div>
-                                <div class="package-price">$999<span>/month</span></div>
-                                <ul class="package-features">
-                                    <li><span class="check-icon">✓</span> Everything in Simple +</li>
-                                    <li><span class="check-icon">✓</span> Social Media Marketing</li>
-                                    <li><span class="check-icon">✓</span> Weekly Posts</li>
-                                    <li><span class="check-icon">✓</span> More Backlinks</li>
-                                    <li><span class="check-icon">✓</span> Google Maps Push</li>
-                                    <li><span class="check-icon">✓</span> Lead Tracking</li>
+                            <div class="package-item pkg-advanced">
+                                <div class="package-tier">Advanced Growth</div>
+                                <div class="package-amount">$999<span>/month</span></div>
+                                <ul class="package-list">
+                                    <li><span class="package-check">✓</span> Everything in Simple +</li>
+                                    <li><span class="package-check">✓</span> Social Media Marketing</li>
+                                    <li><span class="package-check">✓</span> Weekly Posts</li>
+                                    <li><span class="package-check">✓</span> More Backlinks</li>
+                                    <li><span class="package-check">✓</span> Google Maps Push</li>
+                                    <li><span class="package-check">✓</span> Lead Tracking</li>
                                 </ul>
                             </div>
                             
-                            <div class="package-card gold">
-                                <div class="package-name">Gold Domination</div>
-                                <div class="package-price">$1299<span>/month</span></div>
-                                <ul class="package-features">
-                                    <li><span class="check-icon">✓</span> Everything in Advanced +</li>
-                                    <li><span class="check-icon">✓</span> Google Ads (PPC)</li>
-                                    <li><span class="check-icon">✓</span> Campaign Setup</li>
-                                    <li><span class="check-icon">✓</span> Ad Creatives</li>
-                                    <li><span class="check-icon">✓</span> Conversion Tracking</li>
-                                    <li><span class="check-icon">✓</span> Weekly ROI Reports</li>
+                            <div class="package-item pkg-gold">
+                                <div class="package-tier">Gold Domination</div>
+                                <div class="package-amount">$1299<span>/month</span></div>
+                                <ul class="package-list">
+                                    <li><span class="package-check">✓</span> Everything in Advanced +</li>
+                                    <li><span class="package-check">✓</span> Google Ads (PPC)</li>
+                                    <li><span class="package-check">✓</span> Campaign Setup</li>
+                                    <li><span class="package-check">✓</span> Ad Creatives</li>
+                                    <li><span class="package-check">✓</span> Conversion Tracking</li>
+                                    <li><span class="package-check">✓</span> Weekly ROI Reports</li>
                                 </ul>
                             </div>
                         </div>
@@ -1934,24 +2841,33 @@
             <!-- Slide 6: Action Plan -->
             <section class="slide" data-slide="6">
                 <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
-                <div class="blob blob-1"></div>
-                <div class="blob blob-2"></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-pink" style="width: 450px; height: 450px; top: -130px; right: -130px;"></div>
+                    <div class="slide-blob slide-blob-blue" style="width: 350px; height: 350px; bottom: -100px; left: -100px;"></div>
+                    <div class="float-element" style="top: 15%; left: 12%; font-size: 32px; animation-delay: 0.3s;">📅</div>
+                    <div class="float-element" style="bottom: 25%; right: 10%; font-size: 28px; animation-delay: 1.5s;">🎯</div>
+                </div>
                 <div class="slide-scroll">
-                    <div class="slide-content">
-                        <span class="badge">Execution Roadmap</span>
-                        <h1 class="title">90-Day <span class="highlight">Action Plan</span></h1>
-                        <p class="subtitle">Strategic milestones to achieve Page 1 rankings</p>
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">🗓️</span>
+                                <span>Execution Roadmap</span>
+                            </div>
+                            <h1 class="slide-title">90-Day <span class="gradient-highlight">Action Plan</span></h1>
+                            <p class="slide-subtitle">Strategic milestones to achieve Page 1 rankings</p>
+                        </div>
                         
-                        <div class="grid-3">
-                            <div class="timeline-card month1">
-                                <div class="timeline-month">
-                                    <div class="timeline-icon">🔧</div>
-                                    <div>
-                                        <div class="timeline-title">Month 1</div>
-                                        <div class="timeline-subtitle">Foundation & Fixes</div>
+                        <div class="timeline-grid">
+                            <div class="timeline-item tl-month1">
+                                <div class="timeline-header">
+                                    <div class="timeline-icon-wrap">🔧</div>
+                                    <div class="timeline-info">
+                                        <h3>Month 1</h3>
+                                        <span>Foundation & Fixes</span>
                                     </div>
                                 </div>
-                                <ul class="timeline-tasks">
+                                <ul class="timeline-list">
                                     <li>Fix mobile usability issues</li>
                                     <li>Setup Google Search Console</li>
                                     <li>Optimize meta titles & descriptions</li>
@@ -1960,15 +2876,15 @@
                                 </ul>
                             </div>
                             
-                            <div class="timeline-card month2">
-                                <div class="timeline-month">
-                                    <div class="timeline-icon">🚀</div>
-                                    <div>
-                                        <div class="timeline-title">Month 2</div>
-                                        <div class="timeline-subtitle">Ranking Push</div>
+                            <div class="timeline-item tl-month2">
+                                <div class="timeline-header">
+                                    <div class="timeline-icon-wrap">🚀</div>
+                                    <div class="timeline-info">
+                                        <h3>Month 2</h3>
+                                        <span>Ranking Push</span>
                                     </div>
                                 </div>
-                                <ul class="timeline-tasks">
+                                <ul class="timeline-list">
                                     <li>Publish ranking content</li>
                                     <li>Build 40-60 quality backlinks</li>
                                     <li>Activate social media presence</li>
@@ -1977,15 +2893,15 @@
                                 </ul>
                             </div>
                             
-                            <div class="timeline-card month3">
-                                <div class="timeline-month">
-                                    <div class="timeline-icon">💥</div>
-                                    <div>
-                                        <div class="timeline-title">Month 3</div>
-                                        <div class="timeline-subtitle">Lead Explosion</div>
+                            <div class="timeline-item tl-month3">
+                                <div class="timeline-header">
+                                    <div class="timeline-icon-wrap">💥</div>
+                                    <div class="timeline-info">
+                                        <h3>Month 3</h3>
+                                        <span>Lead Explosion</span>
                                     </div>
                                 </div>
-                                <ul class="timeline-tasks">
+                                <ul class="timeline-list">
                                     <li>Conversion optimization</li>
                                     <li>Google Maps aggression</li>
                                     <li>PPC campaigns (Gold plan)</li>
@@ -2001,38 +2917,54 @@
             <!-- Slide 7: Results -->
             <section class="slide" data-slide="7">
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
-                <div class="blob blob-2"></div>
-                <div class="blob blob-3"></div>
-                <div class="slide-content">
-                    <span class="badge">Expected Outcomes</span>
-                    <h1 class="title">90-Day <span class="highlight">Results</span></h1>
-                    <p class="subtitle">What you can expect when executed properly</p>
-                    
-                    <div class="grid-4" style="max-width: 800px;">
-                        <div class="stat-card">
-                            <div class="stat-value">Page 1</div>
-                            <div class="stat-label">Google Rankings</div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-gold" style="width: 500px; height: 500px; top: -150px; left: -150px;"></div>
+                    <div class="slide-blob slide-blob-pink" style="width: 400px; height: 400px; bottom: -120px; right: -120px;"></div>
+                    <div class="float-element" style="top: 12%; right: 12%; font-size: 40px; animation-delay: 0s;">📈</div>
+                    <div class="float-element" style="bottom: 20%; left: 8%; font-size: 32px; animation-delay: 1s;">🎉</div>
+                    <div class="float-element" style="top: 40%; left: 5%; font-size: 28px; animation-delay: 2s;">⭐</div>
+                </div>
+                <div class="slide-scroll">
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">🏆</span>
+                                <span>Expected Outcomes</span>
+                            </div>
+                            <h1 class="slide-title">90-Day <span class="gradient-highlight">Results</span></h1>
+                            <p class="slide-subtitle">What you can expect when executed properly</p>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-value">Top 3</div>
-                            <div class="stat-label">Google Maps Pack</div>
+                        
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-icon">🥇</div>
+                                <div class="result-value">Page 1</div>
+                                <div class="result-label">Google Rankings</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon">📍</div>
+                                <div class="result-value">Top 3</div>
+                                <div class="result-label">Google Maps Pack</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon">📈</div>
+                                <div class="result-value">2-5x</div>
+                                <div class="result-label">Traffic Growth</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon">💰</div>
+                                <div class="result-value">Daily</div>
+                                <div class="result-label">Inbound Leads</div>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-value">2-5x</div>
-                            <div class="stat-label">Traffic Growth</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">Daily</div>
-                            <div class="stat-label">Inbound Leads</div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex-row mt-3">
-                        <div class="pet-image-container">
-                            <img src="images/growth-chart.jpg" alt="Growth Chart" class="small-image">
-                        </div>
-                        <div class="pet-image-container">
-                            <img src="images/happy-customer.jpg" alt="Happy Customer" class="small-image">
+                        
+                        <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
+                            <div style="position: relative; padding: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.1);">
+                                <img src="images/growth-chart.jpg" alt="Growth Chart" style="width: 200px; height: 140px; object-fit: cover; border-radius: 14px; display: block;">
+                            </div>
+                            <div style="position: relative; padding: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.1);">
+                                <img src="images/happy-customer.jpg" alt="Happy Customer" style="width: 200px; height: 140px; object-fit: cover; border-radius: 14px; display: block;">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2041,46 +2973,61 @@
             <!-- Slide 8: Why Us -->
             <section class="slide" data-slide="8">
                 <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
-                <div class="blob blob-1"></div>
-                <div class="blob blob-3"></div>
+                <div class="slide-bg-elements">
+                    <div class="slide-blob slide-blob-blue" style="width: 450px; height: 450px; top: -130px; left: -130px;"></div>
+                    <div class="slide-blob slide-blob-pink" style="width: 350px; height: 350px; bottom: -100px; right: -100px;"></div>
+                    <div class="float-element" style="top: 15%; right: 12%; font-size: 36px; animation-delay: 0.5s;">💪</div>
+                    <div class="float-element" style="bottom: 25%; left: 10%; font-size: 32px; animation-delay: 1.5s;">🌟</div>
+                </div>
                 <div class="slide-scroll">
-                    <div class="slide-content">
-                    <span class="badge">Our Difference</span>
-                    <h1 class="title">Why <span class="highlight">Bitdecentro</span> Works</h1>
-                    <p class="subtitle">We focus on real growth, not just reports</p>
-                    
-                    <div class="grid-2" style="max-width: 800px;">
-                        <div class="comparison-card bad">
-                            <h3 class="comparison-title">❌ Most SEO Agencies</h3>
-                            <ul class="comparison-list">
-                                <li><span class="icon-x">✕</span> Just send monthly reports</li>
-                                <li><span class="icon-x">✕</span> Generic strategies</li>
-                                <li><span class="icon-x">✕</span> No real growth focus</li>
-                                <li><span class="icon-x">✕</span> Long contracts, slow results</li>
-                                <li><span class="icon-x">✕</span> One-size-fits-all approach</li>
-                            </ul>
+                    <div class="slide-layout">
+                        <div class="slide-header">
+                            <div class="slide-badge">
+                                <span class="slide-badge-icon">✨</span>
+                                <span>Our Difference</span>
+                            </div>
+                            <h1 class="slide-title">Why <span class="gradient-highlight">Bitdecentro</span> Works</h1>
+                            <p class="slide-subtitle">We focus on real growth, not just reports</p>
                         </div>
                         
-                        <div class="comparison-card good">
-                            <h3 class="comparison-title">✓ Bitdecentro Approach</h3>
-                            <ul class="comparison-list">
-                                <li><span class="icon-check">✓</span> Full attack strategy</li>
-                                <li><span class="icon-check">✓</span> Local Miami expertise</li>
-                                <li><span class="icon-check">✓</span> Fast, measurable results</li>
-                                <li><span class="icon-check">✓</span> Flexible month-to-month</li>
-                                <li><span class="icon-check">✓</span> Pet industry focus</li>
-                            </ul>
+                        <div class="comparison-grid">
+                            <div class="compare-card compare-bad">
+                                <div class="compare-header">
+                                    <div class="compare-icon">❌</div>
+                                    <h3>Most SEO Agencies</h3>
+                                </div>
+                                <ul class="compare-list">
+                                    <li><span class="compare-x">✕</span> Just send monthly reports</li>
+                                    <li><span class="compare-x">✕</span> Generic strategies</li>
+                                    <li><span class="compare-x">✕</span> No real growth focus</li>
+                                    <li><span class="compare-x">✕</span> Long contracts, slow results</li>
+                                    <li><span class="compare-x">✕</span> One-size-fits-all approach</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="compare-card compare-good">
+                                <div class="compare-header">
+                                    <div class="compare-icon">✅</div>
+                                    <h3>Bitdecentro Approach</h3>
+                                </div>
+                                <ul class="compare-list">
+                                    <li><span class="compare-check">✓</span> Full attack strategy</li>
+                                    <li><span class="compare-check">✓</span> Local Miami expertise</li>
+                                    <li><span class="compare-check">✓</span> Fast, measurable results</li>
+                                    <li><span class="compare-check">✓</span> Flexible month-to-month</li>
+                                    <li><span class="compare-check">✓</span> Pet industry focus</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="pet-image-container mt-3">
-                        <img src="images/groomed-poodle.jpg" alt="Happy Dog" class="round-image">
+                        
+                        <div style="display: flex; justify-content: center; margin-top: 40px;">
+                            <div style="position: relative; padding: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); border-radius: 50%; box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);">
+                                <img src="images/groomed-poodle.jpg" alt="Happy Dog" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; display: block;">
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Slide 9: Our Clients -->
             <section class="slide" data-slide="9">
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
                 <div class="blob blob-1"></div>

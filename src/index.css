@@ -282,3 +282,63 @@
     transform: scale(1);
   }
 }
+
+/* Print Styles - Each slide on a separate page */
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+  
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .print-hidden, 
+  .slide-container > header,
+  .slide-container > nav {
+    display: none !important;
+  }
+  
+  .print-slides-container {
+    display: block !important;
+  }
+  
+  .print-slide {
+    width: 100vw;
+    height: 100vh;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    display: flex !important;
+    flex-direction: column;
+    background: linear-gradient(135deg, #FFF5F0 0%, #FFEEE6 50%, #FFE4D9 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .print-slide:last-child {
+    page-break-after: auto;
+  }
+  
+  .print-slide-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .print-slide-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+  }
+}

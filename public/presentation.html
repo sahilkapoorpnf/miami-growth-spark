@@ -24,8 +24,8 @@
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --card-bg: rgba(255, 255, 255, 0.95);
-            --shadow-card: 0 10px 40px -10px rgba(30, 41, 59, 0.15);
-            --shadow-elevated: 0 20px 50px rgba(30, 41, 59, 0.2);
+            --shadow-card: 0 4px 20px -4px rgba(30, 41, 59, 0.12);
+            --shadow-elevated: 0 12px 32px rgba(30, 41, 59, 0.18);
         }
         
         body {
@@ -59,10 +59,12 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 80px 40px 100px;
+            padding: 70px 24px 80px;
             opacity: 0;
             transform: translateX(50px);
             transition: all 0.5s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         
         .slide.active {
@@ -75,10 +77,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            max-width: 1400px;
+            justify-content: flex-start;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            padding: 20px 0;
         }
         
         /* Header */
@@ -91,18 +94,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 40px;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
         
         .header img {
-            height: 40px;
+            height: 32px;
+            object-fit: contain;
         }
         
         .slide-counter {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
         }
         
@@ -121,20 +125,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 40px;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
         
         .nav-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
+            gap: 6px;
+            padding: 8px 16px;
             border: none;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
@@ -143,6 +147,7 @@
         .nav-btn.prev {
             background: var(--card-bg);
             color: var(--text-dark);
+            border: 1px solid rgba(0,0,0,0.1);
         }
         
         .nav-btn.prev:hover:not(:disabled) {
@@ -165,12 +170,12 @@
         
         .dots {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 10px;
             background: rgba(100, 116, 139, 0.3);
             border: none;
@@ -179,7 +184,7 @@
         }
         
         .dot.active {
-            width: 32px;
+            width: 28px;
             background: var(--primary);
         }
         
@@ -190,20 +195,21 @@
         /* Typography */
         .badge {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            font-size: 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 500;
             color: var(--miami-pink);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(236, 72, 153, 0.2);
         }
         
         .title {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(24px, 4vw, 42px);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             line-height: 1.2;
         }
         
@@ -212,102 +218,126 @@
         }
         
         .subtitle {
-            font-size: clamp(16px, 2vw, 20px);
+            font-size: clamp(14px, 1.8vw, 16px);
             color: var(--text-muted);
             text-align: center;
-            max-width: 700px;
+            max-width: 600px;
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
         }
         
         /* Cards */
         .card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 20px;
             box-shadow: var(--shadow-card);
             border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-elevated);
-        }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            width: 100%;
         }
         
         /* Feature Pills */
         .pills {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         
         .pill {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+            gap: 6px;
+            padding: 8px 14px;
             background: var(--card-bg);
-            border-radius: 30px;
-            font-size: 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 500;
             box-shadow: var(--shadow-card);
         }
         
-        .pill-icon {
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Images */
+        /* Images - FIXED SIZING */
         .hero-image {
             width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
+            max-width: 320px;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
             box-shadow: var(--shadow-elevated);
-            margin: 20px 0;
+            margin: 16px 0;
         }
         
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            max-width: 600px;
-        }
-        
-        .image-grid img {
+        .inline-image {
             width: 100%;
+            max-width: 280px;
+            height: 160px;
+            object-fit: cover;
             border-radius: 12px;
             box-shadow: var(--shadow-card);
         }
         
-        /* Package Cards */
-        .packages-grid {
+        .side-image {
+            width: 100%;
+            max-width: 300px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .round-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow-elevated);
+            border: 4px solid white;
+        }
+        
+        .small-image {
+            width: 100%;
+            max-width: 200px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        /* Grids */
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
             width: 100%;
         }
         
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            width: 100%;
+        }
+        
+        @media (max-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+        
+        /* Package Cards */
         .package-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: 16px;
+            padding: 20px;
             box-shadow: var(--shadow-card);
-            border: 2px solid transparent;
-            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
@@ -318,24 +348,19 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
         }
         
         .package-card.simple::before { background: var(--primary); }
         .package-card.advanced::before { background: #eab308; }
         .package-card.gold::before { background: #f97316; }
         
-        .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-elevated);
-        }
-        
         .package-name {
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .package-card.simple .package-name { color: var(--primary); }
@@ -343,52 +368,37 @@
         .package-card.gold .package-name { color: #f97316; }
         
         .package-price {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         
         .package-price span {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 400;
             color: var(--text-muted);
         }
         
         .package-features {
             list-style: none;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
         }
         
         .package-features li {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            font-size: 14px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 12px;
         }
         
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .check-icon {
-            color: #22c55e;
-            font-weight: bold;
-        }
+        .check-icon { color: #22c55e; font-weight: bold; }
         
         /* Timeline */
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            width: 100%;
-        }
-        
         .timeline-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 16px;
             box-shadow: var(--shadow-card);
             position: relative;
         }
@@ -399,8 +409,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            border-radius: 16px 16px 0 0;
+            height: 3px;
+            border-radius: 12px 12px 0 0;
         }
         
         .timeline-card.month1::before { background: #22c55e; }
@@ -410,33 +420,26 @@
         .timeline-month {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
         
         .timeline-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 18px;
         }
         
         .month1 .timeline-icon { background: rgba(34, 197, 94, 0.1); }
         .month2 .timeline-icon { background: rgba(59, 130, 246, 0.1); }
         .month3 .timeline-icon { background: rgba(249, 115, 22, 0.1); }
         
-        .timeline-title {
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        .timeline-subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
+        .timeline-title { font-size: 15px; font-weight: 600; }
+        .timeline-subtitle { font-size: 11px; color: var(--text-muted); }
         
         .timeline-tasks {
             list-style: none;
@@ -445,78 +448,54 @@
         .timeline-tasks li {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 0;
-            font-size: 14px;
+            gap: 6px;
+            padding: 3px 0;
+            font-size: 11px;
             color: var(--text-muted);
         }
         
         .timeline-tasks li::before {
             content: '→';
             color: var(--primary);
+            font-size: 10px;
         }
         
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
-        }
-        
+        /* Stats */
         .stat-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
             box-shadow: var(--shadow-card);
-            transition: all 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: scale(1.05);
         }
         
         .stat-value {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .stat-label {
-            font-size: 14px;
+            font-size: 11px;
             color: var(--text-muted);
         }
         
-        /* Comparison Section */
-        .comparison {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            width: 100%;
-        }
-        
+        /* Comparison */
         .comparison-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 28px;
+            border-radius: 12px;
+            padding: 20px;
             box-shadow: var(--shadow-card);
         }
         
-        .comparison-card.bad {
-            border-top: 4px solid #ef4444;
-        }
-        
-        .comparison-card.good {
-            border-top: 4px solid #22c55e;
-        }
+        .comparison-card.bad { border-top: 3px solid #ef4444; }
+        .comparison-card.good { border-top: 3px solid #22c55e; }
         
         .comparison-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         
         .comparison-list {
@@ -526,81 +505,139 @@
         .comparison-list li {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            font-size: 14px;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 12px;
         }
         
         .icon-x { color: #ef4444; }
         .icon-check { color: #22c55e; }
         
-        /* Problem Cards */
-        .problems-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            width: 100%;
-        }
-        
+        /* Search Terms */
         .search-terms {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 28px;
+            border-radius: 12px;
+            padding: 20px;
             box-shadow: var(--shadow-card);
         }
         
         .search-terms h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
+            font-size: 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
-        .term-list {
-            list-style: none;
-        }
+        .term-list { list-style: none; }
         
         .term-list li {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 0;
+            gap: 10px;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            font-size: 14px;
+            font-size: 12px;
         }
         
         .term-num {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
             background: var(--primary);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 600;
         }
         
-        /* Contact Section */
+        /* Audit */
+        .audit-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .audit-card h4 {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        
+        .audit-score {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .audit-score.bad { color: #ef4444; }
+        .audit-score.medium { color: #f59e0b; }
+        .audit-score.good { color: #22c55e; }
+        
+        .audit-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .audit-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+        
+        /* Solution Cards */
+        .solution-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .solution-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 auto 10px;
+        }
+        
+        .solution-card h4 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .solution-card p {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        /* Contact */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: 12px;
             justify-content: center;
-            margin: 32px 0;
+            margin: 20px 0;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 24px;
+            gap: 8px;
+            padding: 10px 16px;
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: var(--shadow-card);
-            font-size: 15px;
+            font-size: 13px;
         }
         
         .contact-item a {
@@ -615,173 +652,91 @@
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 40px;
+            gap: 8px;
+            padding: 12px 28px;
             background: linear-gradient(135deg, var(--miami-pink), var(--miami-pink-light));
             color: white;
             border: none;
-            border-radius: 30px;
-            font-size: 18px;
+            border-radius: 25px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
-            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
         }
         
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 12px 32px rgba(236, 72, 153, 0.4);
         }
         
         /* Prepared For */
         .prepared-for {
             text-align: center;
-            margin-top: 40px;
-            opacity: 0.7;
+            margin-top: 16px;
         }
         
         .prepared-for p {
-            font-size: 13px;
+            font-size: 11px;
             color: var(--text-muted);
         }
         
         .prepared-for h4 {
-            font-size: 18px;
-            color: var(--miami-pink);
-            margin: 4px 0;
-        }
-        
-        /* Two Column Layout */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            width: 100%;
-        }
-        
-        @media (max-width: 768px) {
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-            
-            .slide {
-                padding: 80px 20px 100px;
-            }
-            
-            .header, .navigation {
-                padding: 12px 20px;
-            }
-        }
-        
-        /* Audit Section */
-        .audit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-        
-        .audit-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--shadow-card);
-        }
-        
-        .audit-card h4 {
             font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
+            color: var(--miami-pink);
+            margin: 2px 0;
         }
         
-        .audit-score {
-            font-size: 28px;
-            font-weight: 700;
-        }
-        
-        .audit-score.bad { color: #ef4444; }
-        .audit-score.medium { color: #f59e0b; }
-        .audit-score.good { color: #22c55e; }
-        
-        .audit-bar {
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            margin-top: 12px;
-            overflow: hidden;
-        }
-        
-        .audit-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s;
-        }
-        
-        /* Solution Cards */
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-        
-        .solution-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            transition: all 0.3s;
-        }
-        
-        .solution-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .solution-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+        /* Layout helpers */
+        .flex-row {
             display: flex;
+            gap: 20px;
             align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 16px;
         }
         
-        .solution-card h4 {
-            font-size: 16px;
-            margin-bottom: 8px;
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         
-        .solution-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+        .text-center { text-align: center; }
+        .mt-2 { margin-top: 16px; }
+        .mb-2 { margin-bottom: 16px; }
         
-        /* Print Styles */
+        /* Print */
         @media print {
             .navigation, .header { display: none; }
             .slide { 
                 page-break-after: always; 
                 min-height: 100vh;
-                padding: 40px;
+                padding: 30px;
             }
             body { background: white; }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .slide { padding: 65px 16px 75px; }
+            .header, .navigation { padding: 10px 16px; }
+            .hero-image { max-width: 260px; max-height: 160px; }
+            .inline-image { max-width: 200px; height: 120px; }
+            .side-image { max-width: 200px; height: 120px; }
+            .round-image { width: 80px; height: 80px; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="https://i.ibb.co/xq3KKFM/bitdecentro-new-logo.png" alt="Bitdecentro" id="logo-bitdecentro">
+        <img src="https://i.ibb.co/xq3KKFM/bitdecentro-new-logo.png" alt="Bitdecentro">
         <div class="slide-counter">
             <span id="current-slide">1</span> / <span id="total-slides">9</span>
         </div>
-        <img src="https://i.ibb.co/5xNfJ7N/Miamis-Pet-Grooming-Logo100-1.png" alt="Miami's Pet Grooming" id="logo-miami">
+        <img src="https://i.ibb.co/5xNfJ7N/Miamis-Pet-Grooming-Logo100-1.png" alt="Miami's Pet Grooming">
     </header>
 
     <!-- Presentation -->
@@ -796,18 +751,9 @@
                     <p class="subtitle">A comprehensive digital strategy to put <strong>Miami's Pet Grooming</strong> on top of Google searches</p>
                     
                     <div class="pills">
-                        <div class="pill">
-                            <span class="pill-icon">📈</span>
-                            Page 1 Rankings
-                        </div>
-                        <div class="pill">
-                            <span class="pill-icon">📍</span>
-                            Local Domination
-                        </div>
-                        <div class="pill">
-                            <span class="pill-icon">⚡</span>
-                            Lead Generation
-                        </div>
+                        <div class="pill">📈 Page 1 Rankings</div>
+                        <div class="pill">📍 Local Domination</div>
+                        <div class="pill">⚡ Lead Generation</div>
                     </div>
                     
                     <img src="images/pet-grooming-hero.jpg" alt="Professional Pet Grooming" class="hero-image">
@@ -825,11 +771,11 @@
                 <div class="slide-content">
                     <span class="badge">The Challenge</span>
                     <h1 class="title">Why SEO Matters <span class="highlight">Right Now</span></h1>
-                    <p class="subtitle">Pet owners in Miami search Google daily. If you're not on page 1, your competitors are getting those customers.</p>
+                    <p class="subtitle">Pet owners in Miami search Google daily. If you're not on page 1, competitors get those customers.</p>
                     
-                    <div class="problems-section">
+                    <div class="grid-2">
                         <div class="search-terms">
-                            <h3>🔍 Top Search Terms in Miami</h3>
+                            <h3>🔍 Top Search Terms</h3>
                             <ul class="term-list">
                                 <li><span class="term-num">1</span> "dog grooming near me"</li>
                                 <li><span class="term-num">2</span> "pet grooming Miami"</li>
@@ -840,30 +786,21 @@
                         </div>
                         
                         <div class="card">
-                            <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">⚠️ Current Website Gaps</h3>
-                            <ul style="list-style: none;">
-                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                            <h3 style="font-size: 14px; margin-bottom: 12px;">⚠️ Current Website Gaps</h3>
+                            <div style="font-size: 12px;">
+                                <div style="display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                     <span style="color: #ef4444;">✕</span>
-                                    <div>
-                                        <strong>No Keyword Strategy</strong>
-                                        <p style="font-size: 13px; color: var(--text-muted);">Missing targeted keywords for Miami searches</p>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                    <div><strong>No Keyword Strategy</strong><br><span style="color: var(--text-muted);">Missing targeted keywords</span></div>
+                                </div>
+                                <div style="display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                     <span style="color: #ef4444;">✕</span>
-                                    <div>
-                                        <strong>Google Maps Gap</strong>
-                                        <p style="font-size: 13px; color: var(--text-muted);">Not optimized for local map rankings</p>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;">
+                                    <div><strong>Google Maps Gap</strong><br><span style="color: var(--text-muted);">Not optimized for local</span></div>
+                                </div>
+                                <div style="display: flex; gap: 8px; padding: 8px 0;">
                                     <span style="color: #ef4444;">✕</span>
-                                    <div>
-                                        <strong>No Backlink Authority</strong>
-                                        <p style="font-size: 13px; color: var(--text-muted);">Limited domain authority signals</p>
-                                    </div>
-                                </li>
-                            </ul>
+                                    <div><strong>No Backlink Authority</strong><br><span style="color: var(--text-muted);">Limited domain signals</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -874,42 +811,42 @@
                 <div class="slide-content">
                     <span class="badge">Our Approach</span>
                     <h1 class="title">How <span class="highlight">Bitdecentro</span> Will Help</h1>
-                    <p class="subtitle">We'll turn your website into a lead-generating machine using proven strategies</p>
+                    <p class="subtitle">We'll turn your website into a lead-generating machine</p>
                     
-                    <div class="solution-grid">
+                    <div class="grid-3">
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(8, 145, 178, 0.1);">📍</div>
                             <h4>Local SEO</h4>
-                            <p>Google Maps & Miami-focused search optimization</p>
+                            <p>Google Maps & Miami searches</p>
                         </div>
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(236, 72, 153, 0.1);">🎯</div>
                             <h4>Keyword Strategy</h4>
-                            <p>Target high-value pet grooming keywords</p>
+                            <p>Target high-value keywords</p>
                         </div>
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(34, 197, 94, 0.1);">🔗</div>
                             <h4>Authority Building</h4>
-                            <p>Quality backlinks from trusted sources</p>
+                            <p>Quality backlinks</p>
                         </div>
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(249, 115, 22, 0.1);">💰</div>
-                            <h4>Conversion Optimization</h4>
-                            <p>Turn visitors into paying customers</p>
+                            <h4>Conversions</h4>
+                            <p>Turn visitors to customers</p>
                         </div>
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(139, 92, 246, 0.1);">📱</div>
-                            <h4>Social Visibility</h4>
-                            <p>Instagram & Facebook presence</p>
+                            <h4>Social Media</h4>
+                            <p>Instagram & Facebook</p>
                         </div>
                         <div class="solution-card">
                             <div class="solution-icon" style="background: rgba(234, 179, 8, 0.1);">⚡</div>
                             <h4>Paid Ads</h4>
-                            <p>Instant leads with Google Ads (Gold plan)</p>
+                            <p>Instant leads (Gold)</p>
                         </div>
                     </div>
                     
-                    <img src="images/grooming-tools.jpg" alt="Grooming Tools" style="max-width: 400px; border-radius: 16px; margin-top: 32px; box-shadow: var(--shadow-card);">
+                    <img src="images/grooming-tools.jpg" alt="Grooming Tools" class="inline-image mt-2">
                 </div>
             </section>
             
@@ -917,45 +854,35 @@
             <section class="slide" data-slide="4">
                 <div class="slide-content">
                     <span class="badge">Website Audit</span>
-                    <h1 class="title">Current <span class="highlight">Performance</span> Analysis</h1>
+                    <h1 class="title">Current <span class="highlight">Performance</span></h1>
                     <p class="subtitle">Based on SEOptimer analysis of miamispetgrooming.com</p>
                     
-                    <div class="two-col">
-                        <div>
-                            <div class="audit-grid">
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <div class="grid-2" style="max-width: 400px;">
                                 <div class="audit-card">
-                                    <h4>Overall SEO Score</h4>
+                                    <h4>Overall SEO</h4>
                                     <div class="audit-score medium">C+</div>
-                                    <div class="audit-bar">
-                                        <div class="audit-bar-fill" style="width: 55%; background: #f59e0b;"></div>
-                                    </div>
+                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 55%; background: #f59e0b;"></div></div>
                                 </div>
                                 <div class="audit-card">
                                     <h4>On-Page SEO</h4>
                                     <div class="audit-score bad">42%</div>
-                                    <div class="audit-bar">
-                                        <div class="audit-bar-fill" style="width: 42%; background: #ef4444;"></div>
-                                    </div>
+                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 42%; background: #ef4444;"></div></div>
                                 </div>
                                 <div class="audit-card">
-                                    <h4>Mobile Usability</h4>
+                                    <h4>Mobile</h4>
                                     <div class="audit-score medium">68%</div>
-                                    <div class="audit-bar">
-                                        <div class="audit-bar-fill" style="width: 68%; background: #f59e0b;"></div>
-                                    </div>
+                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 68%; background: #f59e0b;"></div></div>
                                 </div>
                                 <div class="audit-card">
-                                    <h4>Page Speed</h4>
+                                    <h4>Speed</h4>
                                     <div class="audit-score medium">71%</div>
-                                    <div class="audit-bar">
-                                        <div class="audit-bar-fill" style="width: 71%; background: #f59e0b;"></div>
-                                    </div>
+                                    <div class="audit-bar"><div class="audit-bar-fill" style="width: 71%; background: #f59e0b;"></div></div>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <img src="images/google-maps-ranking.jpg" alt="Google Maps Rankings" style="width: 100%; border-radius: 16px; box-shadow: var(--shadow-elevated);">
-                        </div>
+                        <img src="images/google-maps-ranking.jpg" alt="Google Maps" class="side-image">
                     </div>
                 </div>
             </section>
@@ -967,47 +894,44 @@
                     <h1 class="title">Our SEO <span class="highlight">Packages</span></h1>
                     <p class="subtitle">Choose the plan that fits your growth goals</p>
                     
-                    <div class="packages-grid">
+                    <div class="grid-3">
                         <div class="package-card simple">
                             <div class="package-name">Simple SEO</div>
-                            <div class="package-price">$499<span>/month</span></div>
+                            <div class="package-price">$499<span>/mo</span></div>
                             <ul class="package-features">
-                                <li><span class="check-icon">✓</span> Website On-Page SEO</li>
-                                <li><span class="check-icon">✓</span> 10-15 Keyword Optimization</li>
-                                <li><span class="check-icon">✓</span> Meta Titles & Descriptions</li>
-                                <li><span class="check-icon">✓</span> Google Business Profile</li>
+                                <li><span class="check-icon">✓</span> On-Page SEO</li>
+                                <li><span class="check-icon">✓</span> 10-15 Keywords</li>
+                                <li><span class="check-icon">✓</span> Meta Optimization</li>
+                                <li><span class="check-icon">✓</span> Google Business</li>
                                 <li><span class="check-icon">✓</span> Monthly Backlinks</li>
-                                <li><span class="check-icon">✓</span> Monthly Ranking Report</li>
+                                <li><span class="check-icon">✓</span> Ranking Reports</li>
                             </ul>
-                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Rank organically for Miami searches</p>
                         </div>
                         
                         <div class="package-card advanced">
-                            <div class="package-name">Advanced Growth</div>
-                            <div class="package-price">$999<span>/month</span></div>
+                            <div class="package-name">Advanced</div>
+                            <div class="package-price">$999<span>/mo</span></div>
                             <ul class="package-features">
                                 <li><span class="check-icon">✓</span> Everything in Simple +</li>
-                                <li><span class="check-icon">✓</span> Social Media Marketing</li>
-                                <li><span class="check-icon">✓</span> Weekly Posts (IG + FB)</li>
-                                <li><span class="check-icon">✓</span> More Backlinks & Citations</li>
-                                <li><span class="check-icon">✓</span> Google Maps Push</li>
+                                <li><span class="check-icon">✓</span> Social Media</li>
+                                <li><span class="check-icon">✓</span> Weekly Posts</li>
+                                <li><span class="check-icon">✓</span> More Backlinks</li>
+                                <li><span class="check-icon">✓</span> Maps Push</li>
                                 <li><span class="check-icon">✓</span> Lead Tracking</li>
                             </ul>
-                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Google + Social inquiries</p>
                         </div>
                         
                         <div class="package-card gold">
-                            <div class="package-name">Gold Domination</div>
-                            <div class="package-price">$1299<span>/month</span></div>
+                            <div class="package-name">Gold</div>
+                            <div class="package-price">$1299<span>/mo</span></div>
                             <ul class="package-features">
                                 <li><span class="check-icon">✓</span> Everything in Advanced +</li>
                                 <li><span class="check-icon">✓</span> Google Ads (PPC)</li>
-                                <li><span class="check-icon">✓</span> Campaign Setup & Bidding</li>
+                                <li><span class="check-icon">✓</span> Campaign Setup</li>
                                 <li><span class="check-icon">✓</span> Ad Creatives</li>
                                 <li><span class="check-icon">✓</span> Conversion Tracking</li>
                                 <li><span class="check-icon">✓</span> Weekly ROI Reports</li>
                             </ul>
-                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Immediate customers + SEO growth</p>
                         </div>
                     </div>
                 </div>
@@ -1020,7 +944,7 @@
                     <h1 class="title">90-Day <span class="highlight">Action Plan</span></h1>
                     <p class="subtitle">Strategic milestones to achieve Page 1 rankings</p>
                     
-                    <div class="timeline">
+                    <div class="grid-3">
                         <div class="timeline-card month1">
                             <div class="timeline-month">
                                 <div class="timeline-icon">🔧</div>
@@ -1030,10 +954,10 @@
                                 </div>
                             </div>
                             <ul class="timeline-tasks">
-                                <li>Fix mobile usability issues</li>
-                                <li>Setup Google Search Console</li>
-                                <li>Optimize meta titles & descriptions</li>
-                                <li>Google Business Profile setup</li>
+                                <li>Fix mobile issues</li>
+                                <li>Setup Search Console</li>
+                                <li>Optimize meta tags</li>
+                                <li>Google Business setup</li>
                                 <li>Technical SEO fixes</li>
                             </ul>
                         </div>
@@ -1047,11 +971,11 @@
                                 </div>
                             </div>
                             <ul class="timeline-tasks">
-                                <li>Publish ranking content</li>
-                                <li>Build 40-60 quality backlinks</li>
-                                <li>Activate social media presence</li>
-                                <li>Local citations building</li>
-                                <li>Review generation strategy</li>
+                                <li>Publish content</li>
+                                <li>Build 40-60 backlinks</li>
+                                <li>Activate social media</li>
+                                <li>Local citations</li>
+                                <li>Review strategy</li>
                             </ul>
                         </div>
                         
@@ -1065,10 +989,10 @@
                             </div>
                             <ul class="timeline-tasks">
                                 <li>Conversion optimization</li>
-                                <li>Google Maps aggression</li>
-                                <li>PPC campaigns (Gold plan)</li>
-                                <li>Review & adjust strategy</li>
-                                <li>Scale successful tactics</li>
+                                <li>Maps aggression</li>
+                                <li>PPC campaigns (Gold)</li>
+                                <li>Review & adjust</li>
+                                <li>Scale tactics</li>
                             </ul>
                         </div>
                     </div>
@@ -1082,18 +1006,18 @@
                     <h1 class="title">90-Day <span class="highlight">Results</span></h1>
                     <p class="subtitle">What you can expect when executed properly</p>
                     
-                    <div class="stats-grid">
+                    <div class="grid-4" style="max-width: 700px;">
                         <div class="stat-card">
                             <div class="stat-value">Page 1</div>
                             <div class="stat-label">Google Rankings</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-value">Top 3</div>
-                            <div class="stat-label">Google Maps Pack</div>
+                            <div class="stat-label">Maps Pack</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-value">2-5x</div>
-                            <div class="stat-label">Website Traffic Growth</div>
+                            <div class="stat-label">Traffic Growth</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-value">Daily</div>
@@ -1101,9 +1025,9 @@
                         </div>
                     </div>
                     
-                    <div class="two-col" style="margin-top: 40px;">
-                        <img src="images/growth-chart.jpg" alt="Growth Chart" style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: var(--shadow-card);">
-                        <img src="images/happy-customer.jpg" alt="Happy Customer" style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: var(--shadow-card);">
+                    <div class="flex-row mt-2">
+                        <img src="images/growth-chart.jpg" alt="Growth Chart" class="small-image">
+                        <img src="images/happy-customer.jpg" alt="Happy Customer" class="small-image">
                     </div>
                 </div>
             </section>
@@ -1115,31 +1039,31 @@
                     <h1 class="title">Why <span class="highlight">Bitdecentro</span> Works</h1>
                     <p class="subtitle">We focus on real growth, not just reports</p>
                     
-                    <div class="comparison">
+                    <div class="grid-2" style="max-width: 700px;">
                         <div class="comparison-card bad">
                             <h3 class="comparison-title">❌ Most SEO Agencies</h3>
                             <ul class="comparison-list">
-                                <li><span class="icon-x">✕</span> Just send monthly reports</li>
+                                <li><span class="icon-x">✕</span> Just send reports</li>
                                 <li><span class="icon-x">✕</span> Generic strategies</li>
-                                <li><span class="icon-x">✕</span> No real growth focus</li>
-                                <li><span class="icon-x">✕</span> Long contracts, slow results</li>
-                                <li><span class="icon-x">✕</span> One-size-fits-all approach</li>
+                                <li><span class="icon-x">✕</span> No growth focus</li>
+                                <li><span class="icon-x">✕</span> Long contracts</li>
+                                <li><span class="icon-x">✕</span> One-size-fits-all</li>
                             </ul>
                         </div>
                         
                         <div class="comparison-card good">
-                            <h3 class="comparison-title">✓ Bitdecentro Approach</h3>
+                            <h3 class="comparison-title">✓ Bitdecentro</h3>
                             <ul class="comparison-list">
-                                <li><span class="icon-check">✓</span> Attack Google Maps + SEO + Social + PPC together</li>
-                                <li><span class="icon-check">✓</span> Local Miami market expertise</li>
-                                <li><span class="icon-check">✓</span> Fast, measurable results</li>
-                                <li><span class="icon-check">✓</span> Flexible month-to-month plans</li>
-                                <li><span class="icon-check">✓</span> Custom strategy for pet industry</li>
+                                <li><span class="icon-check">✓</span> Full attack strategy</li>
+                                <li><span class="icon-check">✓</span> Miami expertise</li>
+                                <li><span class="icon-check">✓</span> Fast results</li>
+                                <li><span class="icon-check">✓</span> Flexible plans</li>
+                                <li><span class="icon-check">✓</span> Pet industry focus</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <img src="images/groomed-poodle.jpg" alt="Happy Groomed Dog" style="max-width: 300px; border-radius: 50%; margin-top: 32px; box-shadow: var(--shadow-elevated);">
+                    <img src="images/groomed-poodle.jpg" alt="Happy Dog" class="round-image mt-2">
                 </div>
             </section>
             
@@ -1151,22 +1075,14 @@
                     <p class="subtitle">Let's put Miami's Pet Grooming on top of Google and start generating leads today.</p>
                     
                     <div class="contact-info">
-                        <div class="contact-item">
-                            📧 <a href="mailto:hello@bitdecentro.com">hello@bitdecentro.com</a>
-                        </div>
-                        <div class="contact-item">
-                            📞 <a href="tel:+1234567890">(123) 456-7890</a>
-                        </div>
-                        <div class="contact-item">
-                            🌐 <a href="https://bitdecentro.com" target="_blank">bitdecentro.com</a>
-                        </div>
+                        <div class="contact-item">📧 <a href="mailto:hello@bitdecentro.com">hello@bitdecentro.com</a></div>
+                        <div class="contact-item">📞 <a href="tel:+1234567890">(123) 456-7890</a></div>
+                        <div class="contact-item">🌐 <a href="https://bitdecentro.com">bitdecentro.com</a></div>
                     </div>
                     
-                    <a href="mailto:hello@bitdecentro.com" class="cta-btn">
-                        Let's Start Growing 🚀
-                    </a>
+                    <a href="mailto:hello@bitdecentro.com" class="cta-btn">Let's Start Growing 🚀</a>
                     
-                    <p style="margin-top: 60px; font-size: 13px; color: var(--text-muted);">
+                    <p style="margin-top: 40px; font-size: 11px; color: var(--text-muted);">
                         © 2024 Bitdecentro. Growth-Driven Digital Marketing.
                     </p>
                 </div>
@@ -1177,19 +1093,12 @@
 
     <!-- Navigation -->
     <nav class="navigation">
-        <button class="nav-btn prev" id="prev-btn" disabled>
-            ← <span>Previous</span>
-        </button>
-        
+        <button class="nav-btn prev" id="prev-btn" disabled>← Previous</button>
         <div class="dots" id="dots"></div>
-        
-        <button class="nav-btn next" id="next-btn">
-            <span>Next</span> →
-        </button>
+        <button class="nav-btn next" id="next-btn">Next →</button>
     </nav>
 
     <script>
-        // Slide Navigation
         const slides = document.querySelectorAll('.slide');
         const slidesWrapper = document.getElementById('slides-wrapper');
         const prevBtn = document.getElementById('prev-btn');
@@ -1201,10 +1110,8 @@
         let currentSlide = 0;
         const totalSlides = slides.length;
         
-        // Initialize
         totalSlidesEl.textContent = totalSlides;
         
-        // Create dots
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('button');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -1215,23 +1122,14 @@
         const dots = document.querySelectorAll('.dot');
         
         function updateSlide() {
-            // Update slide visibility
             slides.forEach((slide, index) => {
                 slide.classList.toggle('active', index === currentSlide);
             });
-            
-            // Move wrapper
             slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update counter
             currentSlideEl.textContent = currentSlide + 1;
-            
-            // Update dots
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
-            
-            // Update buttons
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === totalSlides - 1;
         }
@@ -1244,59 +1142,28 @@
         }
         
         function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlide();
-            }
+            if (currentSlide < totalSlides - 1) { currentSlide++; updateSlide(); }
         }
         
         function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlide();
-            }
+            if (currentSlide > 0) { currentSlide--; updateSlide(); }
         }
         
-        // Event listeners
         prevBtn.addEventListener('click', prevSlide);
         nextBtn.addEventListener('click', nextSlide);
         
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            }
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
         });
         
-        // Touch/Swipe support
         let touchStartX = 0;
-        let touchEndX = 0;
-        
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
+        document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
         document.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
         });
         
-        function handleSwipe() {
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-            }
-        }
-        
-        // Initialize first slide
         updateSlide();
     </script>
 </body>

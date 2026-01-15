@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami's Pet Grooming - SEO & Digital Growth Proposal | Bitdecentro</title>
+    <meta name="description" content="Comprehensive SEO and digital growth strategy proposal for Miami's Pet Grooming by Bitdecentro">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0891b2;
+            --primary-light: #22d3ee;
+            --miami-pink: #ec4899;
+            --miami-pink-light: #f472b6;
+            --warm-peach: #fff5f0;
+            --warm-coral: #ffeee6;
+            --warm-sunset: #ffe4d9;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow-card: 0 10px 40px -10px rgba(30, 41, 59, 0.15);
+            --shadow-elevated: 0 20px 50px rgba(30, 41, 59, 0.2);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--warm-peach) 0%, var(--warm-coral) 50%, var(--warm-sunset) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Slide Container */
+        .presentation {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 40px 100px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .header img {
+            height: 40px;
+        }
+        
+        .slide-counter {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .slide-counter span {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn.prev {
+            background: var(--card-bg);
+            color: var(--text-dark);
+        }
+        
+        .nav-btn.prev:hover:not(:disabled) {
+            background: #f1f5f9;
+        }
+        
+        .nav-btn.next {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-btn.next:hover:not(:disabled) {
+            background: #0e7490;
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 10px;
+            background: rgba(100, 116, 139, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            width: 32px;
+            background: var(--primary);
+        }
+        
+        .dot:hover:not(.active) {
+            background: rgba(8, 145, 178, 0.5);
+        }
+        
+        /* Typography */
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--miami-pink);
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .title .highlight {
+            color: var(--miami-pink);
+        }
+        
+        .subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            width: 100%;
+        }
+        
+        /* Feature Pills */
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .pill-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Images */
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-elevated);
+            margin: 20px 0;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 600px;
+        }
+        
+        .image-grid img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        /* Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            width: 100%;
+        }
+        
+        .package-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-card);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        
+        .package-card.simple::before { background: var(--primary); }
+        .package-card.advanced::before { background: #eab308; }
+        .package-card.gold::before { background: #f97316; }
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .package-name {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .package-card.simple .package-name { color: var(--primary); }
+        .package-card.advanced .package-name { color: #eab308; }
+        .package-card.gold .package-name { color: #f97316; }
+        
+        .package-price {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .package-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .package-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        /* Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            width: 100%;
+        }
+        
+        .timeline-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+        
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .timeline-card.month1::before { background: #22c55e; }
+        .timeline-card.month2::before { background: #3b82f6; }
+        .timeline-card.month3::before { background: #f97316; }
+        
+        .timeline-month {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .timeline-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .month1 .timeline-icon { background: rgba(34, 197, 94, 0.1); }
+        .month2 .timeline-icon { background: rgba(59, 130, 246, 0.1); }
+        .month3 .timeline-icon { background: rgba(249, 115, 22, 0.1); }
+        
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .timeline-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .timeline-tasks {
+            list-style: none;
+        }
+        
+        .timeline-tasks li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .timeline-tasks li::before {
+            content: '→';
+            color: var(--primary);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            width: 100%;
+        }
+        
+        .comparison-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .comparison-card.bad {
+            border-top: 4px solid #ef4444;
+        }
+        
+        .comparison-card.good {
+            border-top: 4px solid #22c55e;
+        }
+        
+        .comparison-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-list {
+            list-style: none;
+        }
+        
+        .comparison-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .icon-x { color: #ef4444; }
+        .icon-check { color: #22c55e; }
+        
+        /* Problem Cards */
+        .problems-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            width: 100%;
+        }
+        
+        .search-terms {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .search-terms h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .term-list {
+            list-style: none;
+        }
+        
+        .term-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+        }
+        
+        .term-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            margin: 32px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            font-size: 15px;
+        }
+        
+        .contact-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            color: var(--miami-pink);
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--miami-pink), var(--miami-pink-light));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+        }
+        
+        /* Prepared For */
+        .prepared-for {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.7;
+        }
+        
+        .prepared-for p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .prepared-for h4 {
+            font-size: 18px;
+            color: var(--miami-pink);
+            margin: 4px 0;
+        }
+        
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .slide {
+                padding: 80px 20px 100px;
+            }
+            
+            .header, .navigation {
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Audit Section */
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .audit-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .audit-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .audit-score {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .audit-score.bad { color: #ef4444; }
+        .audit-score.medium { color: #f59e0b; }
+        .audit-score.good { color: #22c55e; }
+        
+        .audit-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        
+        .audit-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        
+        /* Solution Cards */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .solution-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .solution-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 16px;
+        }
+        
+        .solution-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .solution-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .navigation, .header { display: none; }
+            .slide { 
+                page-break-after: always; 
+                min-height: 100vh;
+                padding: 40px;
+            }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="https://i.ibb.co/xq3KKFM/bitdecentro-new-logo.png" alt="Bitdecentro" id="logo-bitdecentro">
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">9</span>
+        </div>
+        <img src="https://i.ibb.co/5xNfJ7N/Miamis-Pet-Grooming-Logo100-1.png" alt="Miami's Pet Grooming" id="logo-miami">
+    </header>
+
+    <!-- Presentation -->
+    <div class="presentation">
+        <div class="slides-wrapper" id="slides-wrapper">
+            
+            <!-- Slide 1: Title -->
+            <section class="slide active" data-slide="1">
+                <div class="slide-content">
+                    <span class="badge">SEO & Digital Growth Proposal</span>
+                    <h1 class="title">Dominate Miami's<br><span class="highlight">Pet Grooming</span> Market</h1>
+                    <p class="subtitle">A comprehensive digital strategy to put <strong>Miami's Pet Grooming</strong> on top of Google searches</p>
+                    
+                    <div class="pills">
+                        <div class="pill">
+                            <span class="pill-icon">📈</span>
+                            Page 1 Rankings
+                        </div>
+                        <div class="pill">
+                            <span class="pill-icon">📍</span>
+                            Local Domination
+                        </div>
+                        <div class="pill">
+                            <span class="pill-icon">⚡</span>
+                            Lead Generation
+                        </div>
+                    </div>
+                    
+                    <img src="images/pet-grooming-hero.jpg" alt="Professional Pet Grooming" class="hero-image">
+                    
+                    <div class="prepared-for">
+                        <p>Prepared for</p>
+                        <h4>Lester Sanchez</h4>
+                        <p>Miami's Pet Grooming • miamispetgrooming.com</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 2: Problem -->
+            <section class="slide" data-slide="2">
+                <div class="slide-content">
+                    <span class="badge">The Challenge</span>
+                    <h1 class="title">Why SEO Matters <span class="highlight">Right Now</span></h1>
+                    <p class="subtitle">Pet owners in Miami search Google daily. If you're not on page 1, your competitors are getting those customers.</p>
+                    
+                    <div class="problems-section">
+                        <div class="search-terms">
+                            <h3>🔍 Top Search Terms in Miami</h3>
+                            <ul class="term-list">
+                                <li><span class="term-num">1</span> "dog grooming near me"</li>
+                                <li><span class="term-num">2</span> "pet grooming Miami"</li>
+                                <li><span class="term-num">3</span> "mobile dog groomer Miami"</li>
+                                <li><span class="term-num">4</span> "puppy grooming"</li>
+                                <li><span class="term-num">5</span> "pet spa Miami"</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">⚠️ Current Website Gaps</h3>
+                            <ul style="list-style: none;">
+                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                    <span style="color: #ef4444;">✕</span>
+                                    <div>
+                                        <strong>No Keyword Strategy</strong>
+                                        <p style="font-size: 13px; color: var(--text-muted);">Missing targeted keywords for Miami searches</p>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                    <span style="color: #ef4444;">✕</span>
+                                    <div>
+                                        <strong>Google Maps Gap</strong>
+                                        <p style="font-size: 13px; color: var(--text-muted);">Not optimized for local map rankings</p>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;">
+                                    <span style="color: #ef4444;">✕</span>
+                                    <div>
+                                        <strong>No Backlink Authority</strong>
+                                        <p style="font-size: 13px; color: var(--text-muted);">Limited domain authority signals</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 3: Solution -->
+            <section class="slide" data-slide="3">
+                <div class="slide-content">
+                    <span class="badge">Our Approach</span>
+                    <h1 class="title">How <span class="highlight">Bitdecentro</span> Will Help</h1>
+                    <p class="subtitle">We'll turn your website into a lead-generating machine using proven strategies</p>
+                    
+                    <div class="solution-grid">
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(8, 145, 178, 0.1);">📍</div>
+                            <h4>Local SEO</h4>
+                            <p>Google Maps & Miami-focused search optimization</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(236, 72, 153, 0.1);">🎯</div>
+                            <h4>Keyword Strategy</h4>
+                            <p>Target high-value pet grooming keywords</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(34, 197, 94, 0.1);">🔗</div>
+                            <h4>Authority Building</h4>
+                            <p>Quality backlinks from trusted sources</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(249, 115, 22, 0.1);">💰</div>
+                            <h4>Conversion Optimization</h4>
+                            <p>Turn visitors into paying customers</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(139, 92, 246, 0.1);">📱</div>
+                            <h4>Social Visibility</h4>
+                            <p>Instagram & Facebook presence</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-icon" style="background: rgba(234, 179, 8, 0.1);">⚡</div>
+                            <h4>Paid Ads</h4>
+                            <p>Instant leads with Google Ads (Gold plan)</p>
+                        </div>
+                    </div>
+                    
+                    <img src="images/grooming-tools.jpg" alt="Grooming Tools" style="max-width: 400px; border-radius: 16px; margin-top: 32px; box-shadow: var(--shadow-card);">
+                </div>
+            </section>
+            
+            <!-- Slide 4: Audit -->
+            <section class="slide" data-slide="4">
+                <div class="slide-content">
+                    <span class="badge">Website Audit</span>
+                    <h1 class="title">Current <span class="highlight">Performance</span> Analysis</h1>
+                    <p class="subtitle">Based on SEOptimer analysis of miamispetgrooming.com</p>
+                    
+                    <div class="two-col">
+                        <div>
+                            <div class="audit-grid">
+                                <div class="audit-card">
+                                    <h4>Overall SEO Score</h4>
+                                    <div class="audit-score medium">C+</div>
+                                    <div class="audit-bar">
+                                        <div class="audit-bar-fill" style="width: 55%; background: #f59e0b;"></div>
+                                    </div>
+                                </div>
+                                <div class="audit-card">
+                                    <h4>On-Page SEO</h4>
+                                    <div class="audit-score bad">42%</div>
+                                    <div class="audit-bar">
+                                        <div class="audit-bar-fill" style="width: 42%; background: #ef4444;"></div>
+                                    </div>
+                                </div>
+                                <div class="audit-card">
+                                    <h4>Mobile Usability</h4>
+                                    <div class="audit-score medium">68%</div>
+                                    <div class="audit-bar">
+                                        <div class="audit-bar-fill" style="width: 68%; background: #f59e0b;"></div>
+                                    </div>
+                                </div>
+                                <div class="audit-card">
+                                    <h4>Page Speed</h4>
+                                    <div class="audit-score medium">71%</div>
+                                    <div class="audit-bar">
+                                        <div class="audit-bar-fill" style="width: 71%; background: #f59e0b;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="images/google-maps-ranking.jpg" alt="Google Maps Rankings" style="width: 100%; border-radius: 16px; box-shadow: var(--shadow-elevated);">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 5: Packages -->
+            <section class="slide" data-slide="5">
+                <div class="slide-content">
+                    <span class="badge">Investment Options</span>
+                    <h1 class="title">Our SEO <span class="highlight">Packages</span></h1>
+                    <p class="subtitle">Choose the plan that fits your growth goals</p>
+                    
+                    <div class="packages-grid">
+                        <div class="package-card simple">
+                            <div class="package-name">Simple SEO</div>
+                            <div class="package-price">$499<span>/month</span></div>
+                            <ul class="package-features">
+                                <li><span class="check-icon">✓</span> Website On-Page SEO</li>
+                                <li><span class="check-icon">✓</span> 10-15 Keyword Optimization</li>
+                                <li><span class="check-icon">✓</span> Meta Titles & Descriptions</li>
+                                <li><span class="check-icon">✓</span> Google Business Profile</li>
+                                <li><span class="check-icon">✓</span> Monthly Backlinks</li>
+                                <li><span class="check-icon">✓</span> Monthly Ranking Report</li>
+                            </ul>
+                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Rank organically for Miami searches</p>
+                        </div>
+                        
+                        <div class="package-card advanced">
+                            <div class="package-name">Advanced Growth</div>
+                            <div class="package-price">$999<span>/month</span></div>
+                            <ul class="package-features">
+                                <li><span class="check-icon">✓</span> Everything in Simple +</li>
+                                <li><span class="check-icon">✓</span> Social Media Marketing</li>
+                                <li><span class="check-icon">✓</span> Weekly Posts (IG + FB)</li>
+                                <li><span class="check-icon">✓</span> More Backlinks & Citations</li>
+                                <li><span class="check-icon">✓</span> Google Maps Push</li>
+                                <li><span class="check-icon">✓</span> Lead Tracking</li>
+                            </ul>
+                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Google + Social inquiries</p>
+                        </div>
+                        
+                        <div class="package-card gold">
+                            <div class="package-name">Gold Domination</div>
+                            <div class="package-price">$1299<span>/month</span></div>
+                            <ul class="package-features">
+                                <li><span class="check-icon">✓</span> Everything in Advanced +</li>
+                                <li><span class="check-icon">✓</span> Google Ads (PPC)</li>
+                                <li><span class="check-icon">✓</span> Campaign Setup & Bidding</li>
+                                <li><span class="check-icon">✓</span> Ad Creatives</li>
+                                <li><span class="check-icon">✓</span> Conversion Tracking</li>
+                                <li><span class="check-icon">✓</span> Weekly ROI Reports</li>
+                            </ul>
+                            <p style="font-size: 13px; color: var(--text-muted);"><strong>Goal:</strong> Immediate customers + SEO growth</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 6: Action Plan -->
+            <section class="slide" data-slide="6">
+                <div class="slide-content">
+                    <span class="badge">Execution Roadmap</span>
+                    <h1 class="title">90-Day <span class="highlight">Action Plan</span></h1>
+                    <p class="subtitle">Strategic milestones to achieve Page 1 rankings</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-card month1">
+                            <div class="timeline-month">
+                                <div class="timeline-icon">🔧</div>
+                                <div>
+                                    <div class="timeline-title">Month 1</div>
+                                    <div class="timeline-subtitle">Foundation & Fixes</div>
+                                </div>
+                            </div>
+                            <ul class="timeline-tasks">
+                                <li>Fix mobile usability issues</li>
+                                <li>Setup Google Search Console</li>
+                                <li>Optimize meta titles & descriptions</li>
+                                <li>Google Business Profile setup</li>
+                                <li>Technical SEO fixes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-card month2">
+                            <div class="timeline-month">
+                                <div class="timeline-icon">🚀</div>
+                                <div>
+                                    <div class="timeline-title">Month 2</div>
+                                    <div class="timeline-subtitle">Ranking Push</div>
+                                </div>
+                            </div>
+                            <ul class="timeline-tasks">
+                                <li>Publish ranking content</li>
+                                <li>Build 40-60 quality backlinks</li>
+                                <li>Activate social media presence</li>
+                                <li>Local citations building</li>
+                                <li>Review generation strategy</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-card month3">
+                            <div class="timeline-month">
+                                <div class="timeline-icon">💥</div>
+                                <div>
+                                    <div class="timeline-title">Month 3</div>
+                                    <div class="timeline-subtitle">Lead Explosion</div>
+                                </div>
+                            </div>
+                            <ul class="timeline-tasks">
+                                <li>Conversion optimization</li>
+                                <li>Google Maps aggression</li>
+                                <li>PPC campaigns (Gold plan)</li>
+                                <li>Review & adjust strategy</li>
+                                <li>Scale successful tactics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 7: Results -->
+            <section class="slide" data-slide="7">
+                <div class="slide-content">
+                    <span class="badge">Expected Outcomes</span>
+                    <h1 class="title">90-Day <span class="highlight">Results</span></h1>
+                    <p class="subtitle">What you can expect when executed properly</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">Page 1</div>
+                            <div class="stat-label">Google Rankings</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">Top 3</div>
+                            <div class="stat-label">Google Maps Pack</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">2-5x</div>
+                            <div class="stat-label">Website Traffic Growth</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">Daily</div>
+                            <div class="stat-label">Inbound Leads</div>
+                        </div>
+                    </div>
+                    
+                    <div class="two-col" style="margin-top: 40px;">
+                        <img src="images/growth-chart.jpg" alt="Growth Chart" style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: var(--shadow-card);">
+                        <img src="images/happy-customer.jpg" alt="Happy Customer" style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: var(--shadow-card);">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 8: Why Us -->
+            <section class="slide" data-slide="8">
+                <div class="slide-content">
+                    <span class="badge">Our Difference</span>
+                    <h1 class="title">Why <span class="highlight">Bitdecentro</span> Works</h1>
+                    <p class="subtitle">We focus on real growth, not just reports</p>
+                    
+                    <div class="comparison">
+                        <div class="comparison-card bad">
+                            <h3 class="comparison-title">❌ Most SEO Agencies</h3>
+                            <ul class="comparison-list">
+                                <li><span class="icon-x">✕</span> Just send monthly reports</li>
+                                <li><span class="icon-x">✕</span> Generic strategies</li>
+                                <li><span class="icon-x">✕</span> No real growth focus</li>
+                                <li><span class="icon-x">✕</span> Long contracts, slow results</li>
+                                <li><span class="icon-x">✕</span> One-size-fits-all approach</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="comparison-card good">
+                            <h3 class="comparison-title">✓ Bitdecentro Approach</h3>
+                            <ul class="comparison-list">
+                                <li><span class="icon-check">✓</span> Attack Google Maps + SEO + Social + PPC together</li>
+                                <li><span class="icon-check">✓</span> Local Miami market expertise</li>
+                                <li><span class="icon-check">✓</span> Fast, measurable results</li>
+                                <li><span class="icon-check">✓</span> Flexible month-to-month plans</li>
+                                <li><span class="icon-check">✓</span> Custom strategy for pet industry</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <img src="images/groomed-poodle.jpg" alt="Happy Groomed Dog" style="max-width: 300px; border-radius: 50%; margin-top: 32px; box-shadow: var(--shadow-elevated);">
+                </div>
+            </section>
+            
+            <!-- Slide 9: Contact -->
+            <section class="slide" data-slide="9">
+                <div class="slide-content">
+                    <span class="badge">Let's Connect</span>
+                    <h1 class="title">Ready to <span class="highlight">Dominate</span> Miami?</h1>
+                    <p class="subtitle">Let's put Miami's Pet Grooming on top of Google and start generating leads today.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            📧 <a href="mailto:hello@bitdecentro.com">hello@bitdecentro.com</a>
+                        </div>
+                        <div class="contact-item">
+                            📞 <a href="tel:+1234567890">(123) 456-7890</a>
+                        </div>
+                        <div class="contact-item">
+                            🌐 <a href="https://bitdecentro.com" target="_blank">bitdecentro.com</a>
+                        </div>
+                    </div>
+                    
+                    <a href="mailto:hello@bitdecentro.com" class="cta-btn">
+                        Let's Start Growing 🚀
+                    </a>
+                    
+                    <p style="margin-top: 60px; font-size: 13px; color: var(--text-muted);">
+                        © 2024 Bitdecentro. Growth-Driven Digital Marketing.
+                    </p>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <button class="nav-btn prev" id="prev-btn" disabled>
+            ← <span>Previous</span>
+        </button>
+        
+        <div class="dots" id="dots"></div>
+        
+        <button class="nav-btn next" id="next-btn">
+            <span>Next</span> →
+        </button>
+    </nav>
+
+    <script>
+        // Slide Navigation
+        const slides = document.querySelectorAll('.slide');
+        const slidesWrapper = document.getElementById('slides-wrapper');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('dots');
+        const currentSlideEl = document.getElementById('current-slide');
+        const totalSlidesEl = document.getElementById('total-slides');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        
+        // Initialize
+        totalSlidesEl.textContent = totalSlides;
+        
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function updateSlide() {
+            // Update slide visibility
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Move wrapper
+            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update counter
+            currentSlideEl.textContent = currentSlide + 1;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlide();
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+        
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+        
+        // Initialize first slide
+        updateSlide();
+    </script>
+</body>
+</html>

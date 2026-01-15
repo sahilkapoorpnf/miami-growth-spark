@@ -68,6 +68,32 @@
             overflow: hidden;
         }
         
+        /* Scroll container for content overflow */
+        .slide-scroll {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(236, 72, 153, 0.4) transparent;
+        }
+        
+        .slide-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .slide-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--miami-pink), var(--miami-pink-light));
+            border-radius: 10px;
+        }
+        
+        .slide-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--miami-pink);
+        }
+        
         /* Background Layer */
         .slide-bg {
             position: absolute;
@@ -179,6 +205,181 @@
         .slide-counter span {
             color: var(--miami-pink);
             font-weight: 700;
+        }
+        
+        /* Client Cards */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        @media (max-width: 900px) {
+            .clients-grid { grid-template-columns: 1fr; }
+        }
+        
+        .client-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+        
+        .client-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--miami-pink), var(--miami-pink-light));
+        }
+        
+        .client-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-glow-pink);
+        }
+        
+        .client-card.in-discussion {
+            border: 2px dashed rgba(236, 72, 153, 0.4);
+        }
+        
+        .client-card.in-discussion::before {
+            background: linear-gradient(90deg, #eab308, #fbbf24);
+        }
+        
+        .client-card.in-discussion:hover {
+            box-shadow: 0 0 60px rgba(234, 179, 8, 0.3);
+        }
+        
+        .client-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--warm-peach), var(--warm-coral));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 16px;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
+            transition: all 0.3s;
+        }
+        
+        .client-card:hover .client-logo {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .client-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+        
+        .client-location {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .client-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+        
+        .rating-score {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--miami-pink), var(--miami-pink-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .reviews-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .client-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .client-status.active {
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+        
+        .client-status.pending {
+            background: linear-gradient(135deg, #eab308, #fbbf24);
+            color: white;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+            animation: pulse-status 2s infinite;
+        }
+        
+        @keyframes pulse-status {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .client-services {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .service-tag {
+            font-size: 11px;
+            padding: 6px 12px;
+            background: rgba(8, 145, 178, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        /* Animated background elements */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--miami-pink);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
         }
         
         /* Navigation */
@@ -925,7 +1126,7 @@
     <header class="header">
         <img src="https://i.ibb.co/xq3KKFM/bitdecentro-new-logo.png" alt="Bitdecentro">
         <div class="slide-counter">
-            <span id="current-slide">1</span> / <span id="total-slides">9</span>
+            <span id="current-slide">1</span> / <span id="total-slides">10</span>
         </div>
         <img src="https://i.ibb.co/5xNfJ7N/Miamis-Pet-Grooming-Logo100-1.png" alt="Miami's Pet Grooming">
     </header>
@@ -1010,46 +1211,48 @@
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
                 <div class="blob blob-2"></div>
                 <div class="blob blob-3"></div>
-                <div class="slide-content">
-                    <span class="badge">Our Approach</span>
-                    <h1 class="title">How <span class="highlight">Bitdecentro</span> Will Help</h1>
-                    <p class="subtitle">We'll turn your website into a lead-generating machine using proven digital strategies</p>
-                    
-                    <div class="grid-3">
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(8, 145, 178, 0.15);">📍</div>
-                            <h4>Local SEO</h4>
-                            <p>Google Maps & Miami-focused optimization</p>
+                <div class="slide-scroll">
+                    <div class="slide-content">
+                        <span class="badge">Our Approach</span>
+                        <h1 class="title">How <span class="highlight">Bitdecentro</span> Will Help</h1>
+                        <p class="subtitle">We'll turn your website into a lead-generating machine using proven digital strategies</p>
+                        
+                        <div class="grid-3">
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(8, 145, 178, 0.15);">📍</div>
+                                <h4>Local SEO</h4>
+                                <p>Google Maps & Miami-focused optimization</p>
+                            </div>
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(236, 72, 153, 0.15);">🎯</div>
+                                <h4>Keyword Strategy</h4>
+                                <p>Target high-value pet grooming keywords</p>
+                            </div>
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(34, 197, 94, 0.15);">🔗</div>
+                                <h4>Authority Building</h4>
+                                <p>Quality backlinks from trusted sources</p>
+                            </div>
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(249, 115, 22, 0.15);">💰</div>
+                                <h4>Conversion Boost</h4>
+                                <p>Turn visitors into paying customers</p>
+                            </div>
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(139, 92, 246, 0.15);">📱</div>
+                                <h4>Social Visibility</h4>
+                                <p>Instagram & Facebook presence</p>
+                            </div>
+                            <div class="solution-card">
+                                <div class="solution-icon" style="background: rgba(234, 179, 8, 0.15);">⚡</div>
+                                <h4>Paid Ads</h4>
+                                <p>Instant leads with Google Ads</p>
+                            </div>
                         </div>
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(236, 72, 153, 0.15);">🎯</div>
-                            <h4>Keyword Strategy</h4>
-                            <p>Target high-value pet grooming keywords</p>
+                        
+                        <div class="pet-image-container mt-3">
+                            <img src="images/grooming-tools.jpg" alt="Grooming Tools" class="inline-image">
                         </div>
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(34, 197, 94, 0.15);">🔗</div>
-                            <h4>Authority Building</h4>
-                            <p>Quality backlinks from trusted sources</p>
-                        </div>
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(249, 115, 22, 0.15);">💰</div>
-                            <h4>Conversion Boost</h4>
-                            <p>Turn visitors into paying customers</p>
-                        </div>
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(139, 92, 246, 0.15);">📱</div>
-                            <h4>Social Visibility</h4>
-                            <p>Instagram & Facebook presence</p>
-                        </div>
-                        <div class="solution-card">
-                            <div class="solution-icon" style="background: rgba(234, 179, 8, 0.15);">⚡</div>
-                            <h4>Paid Ads</h4>
-                            <p>Instant leads with Google Ads</p>
-                        </div>
-                    </div>
-                    
-                    <div class="pet-image-container mt-3">
-                        <img src="images/grooming-tools.jpg" alt="Grooming Tools" class="inline-image">
                     </div>
                 </div>
             </section>
@@ -1100,49 +1303,51 @@
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
                 <div class="blob blob-2"></div>
                 <div class="blob blob-3"></div>
-                <div class="slide-content">
-                    <span class="badge">Investment Options</span>
-                    <h1 class="title">Our SEO <span class="highlight">Packages</span></h1>
-                    <p class="subtitle">Choose the plan that fits your growth goals</p>
-                    
-                    <div class="grid-3">
-                        <div class="package-card simple">
-                            <div class="package-name">Simple SEO</div>
-                            <div class="package-price">$499<span>/month</span></div>
-                            <ul class="package-features">
-                                <li><span class="check-icon">✓</span> On-Page SEO</li>
-                                <li><span class="check-icon">✓</span> 10-15 Keywords</li>
-                                <li><span class="check-icon">✓</span> Meta Optimization</li>
-                                <li><span class="check-icon">✓</span> Google Business</li>
-                                <li><span class="check-icon">✓</span> Monthly Backlinks</li>
-                                <li><span class="check-icon">✓</span> Ranking Reports</li>
-                            </ul>
-                        </div>
+                <div class="slide-scroll">
+                    <div class="slide-content">
+                        <span class="badge">Investment Options</span>
+                        <h1 class="title">Our SEO <span class="highlight">Packages</span></h1>
+                        <p class="subtitle">Choose the plan that fits your growth goals</p>
                         
-                        <div class="package-card advanced">
-                            <div class="package-name">Advanced Growth</div>
-                            <div class="package-price">$999<span>/month</span></div>
-                            <ul class="package-features">
-                                <li><span class="check-icon">✓</span> Everything in Simple +</li>
-                                <li><span class="check-icon">✓</span> Social Media Marketing</li>
-                                <li><span class="check-icon">✓</span> Weekly Posts</li>
-                                <li><span class="check-icon">✓</span> More Backlinks</li>
-                                <li><span class="check-icon">✓</span> Google Maps Push</li>
-                                <li><span class="check-icon">✓</span> Lead Tracking</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="package-card gold">
-                            <div class="package-name">Gold Domination</div>
-                            <div class="package-price">$1299<span>/month</span></div>
-                            <ul class="package-features">
-                                <li><span class="check-icon">✓</span> Everything in Advanced +</li>
-                                <li><span class="check-icon">✓</span> Google Ads (PPC)</li>
-                                <li><span class="check-icon">✓</span> Campaign Setup</li>
-                                <li><span class="check-icon">✓</span> Ad Creatives</li>
-                                <li><span class="check-icon">✓</span> Conversion Tracking</li>
-                                <li><span class="check-icon">✓</span> Weekly ROI Reports</li>
-                            </ul>
+                        <div class="grid-3">
+                            <div class="package-card simple">
+                                <div class="package-name">Simple SEO</div>
+                                <div class="package-price">$499<span>/month</span></div>
+                                <ul class="package-features">
+                                    <li><span class="check-icon">✓</span> On-Page SEO</li>
+                                    <li><span class="check-icon">✓</span> 10-15 Keywords</li>
+                                    <li><span class="check-icon">✓</span> Meta Optimization</li>
+                                    <li><span class="check-icon">✓</span> Google Business</li>
+                                    <li><span class="check-icon">✓</span> Monthly Backlinks</li>
+                                    <li><span class="check-icon">✓</span> Ranking Reports</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-card advanced">
+                                <div class="package-name">Advanced Growth</div>
+                                <div class="package-price">$999<span>/month</span></div>
+                                <ul class="package-features">
+                                    <li><span class="check-icon">✓</span> Everything in Simple +</li>
+                                    <li><span class="check-icon">✓</span> Social Media Marketing</li>
+                                    <li><span class="check-icon">✓</span> Weekly Posts</li>
+                                    <li><span class="check-icon">✓</span> More Backlinks</li>
+                                    <li><span class="check-icon">✓</span> Google Maps Push</li>
+                                    <li><span class="check-icon">✓</span> Lead Tracking</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-card gold">
+                                <div class="package-name">Gold Domination</div>
+                                <div class="package-price">$1299<span>/month</span></div>
+                                <ul class="package-features">
+                                    <li><span class="check-icon">✓</span> Everything in Advanced +</li>
+                                    <li><span class="check-icon">✓</span> Google Ads (PPC)</li>
+                                    <li><span class="check-icon">✓</span> Campaign Setup</li>
+                                    <li><span class="check-icon">✓</span> Ad Creatives</li>
+                                    <li><span class="check-icon">✓</span> Conversion Tracking</li>
+                                    <li><span class="check-icon">✓</span> Weekly ROI Reports</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1153,61 +1358,63 @@
                 <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
                 <div class="blob blob-1"></div>
                 <div class="blob blob-2"></div>
-                <div class="slide-content">
-                    <span class="badge">Execution Roadmap</span>
-                    <h1 class="title">90-Day <span class="highlight">Action Plan</span></h1>
-                    <p class="subtitle">Strategic milestones to achieve Page 1 rankings</p>
-                    
-                    <div class="grid-3">
-                        <div class="timeline-card month1">
-                            <div class="timeline-month">
-                                <div class="timeline-icon">🔧</div>
-                                <div>
-                                    <div class="timeline-title">Month 1</div>
-                                    <div class="timeline-subtitle">Foundation & Fixes</div>
-                                </div>
-                            </div>
-                            <ul class="timeline-tasks">
-                                <li>Fix mobile usability issues</li>
-                                <li>Setup Google Search Console</li>
-                                <li>Optimize meta titles & descriptions</li>
-                                <li>Google Business Profile setup</li>
-                                <li>Technical SEO fixes</li>
-                            </ul>
-                        </div>
+                <div class="slide-scroll">
+                    <div class="slide-content">
+                        <span class="badge">Execution Roadmap</span>
+                        <h1 class="title">90-Day <span class="highlight">Action Plan</span></h1>
+                        <p class="subtitle">Strategic milestones to achieve Page 1 rankings</p>
                         
-                        <div class="timeline-card month2">
-                            <div class="timeline-month">
-                                <div class="timeline-icon">🚀</div>
-                                <div>
-                                    <div class="timeline-title">Month 2</div>
-                                    <div class="timeline-subtitle">Ranking Push</div>
+                        <div class="grid-3">
+                            <div class="timeline-card month1">
+                                <div class="timeline-month">
+                                    <div class="timeline-icon">🔧</div>
+                                    <div>
+                                        <div class="timeline-title">Month 1</div>
+                                        <div class="timeline-subtitle">Foundation & Fixes</div>
+                                    </div>
                                 </div>
+                                <ul class="timeline-tasks">
+                                    <li>Fix mobile usability issues</li>
+                                    <li>Setup Google Search Console</li>
+                                    <li>Optimize meta titles & descriptions</li>
+                                    <li>Google Business Profile setup</li>
+                                    <li>Technical SEO fixes</li>
+                                </ul>
                             </div>
-                            <ul class="timeline-tasks">
-                                <li>Publish ranking content</li>
-                                <li>Build 40-60 quality backlinks</li>
-                                <li>Activate social media presence</li>
-                                <li>Local citations building</li>
-                                <li>Review generation strategy</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="timeline-card month3">
-                            <div class="timeline-month">
-                                <div class="timeline-icon">💥</div>
-                                <div>
-                                    <div class="timeline-title">Month 3</div>
-                                    <div class="timeline-subtitle">Lead Explosion</div>
+                            
+                            <div class="timeline-card month2">
+                                <div class="timeline-month">
+                                    <div class="timeline-icon">🚀</div>
+                                    <div>
+                                        <div class="timeline-title">Month 2</div>
+                                        <div class="timeline-subtitle">Ranking Push</div>
+                                    </div>
                                 </div>
+                                <ul class="timeline-tasks">
+                                    <li>Publish ranking content</li>
+                                    <li>Build 40-60 quality backlinks</li>
+                                    <li>Activate social media presence</li>
+                                    <li>Local citations building</li>
+                                    <li>Review generation strategy</li>
+                                </ul>
                             </div>
-                            <ul class="timeline-tasks">
-                                <li>Conversion optimization</li>
-                                <li>Google Maps aggression</li>
-                                <li>PPC campaigns (Gold plan)</li>
-                                <li>Review & adjust strategy</li>
-                                <li>Scale successful tactics</li>
-                            </ul>
+                            
+                            <div class="timeline-card month3">
+                                <div class="timeline-month">
+                                    <div class="timeline-icon">💥</div>
+                                    <div>
+                                        <div class="timeline-title">Month 3</div>
+                                        <div class="timeline-subtitle">Lead Explosion</div>
+                                    </div>
+                                </div>
+                                <ul class="timeline-tasks">
+                                    <li>Conversion optimization</li>
+                                    <li>Google Maps aggression</li>
+                                    <li>PPC campaigns (Gold plan)</li>
+                                    <li>Review & adjust strategy</li>
+                                    <li>Scale successful tactics</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1293,9 +1500,96 @@
                 </div>
             </section>
             
-            <!-- Slide 9: Contact -->
+            <!-- Slide 9: Our Clients -->
             <section class="slide" data-slide="9">
                 <div class="slide-bg"><img src="images/bg-gradient-1.jpg" alt=""></div>
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="blob blob-3"></div>
+                <div class="slide-scroll">
+                    <div class="slide-content">
+                        <span class="badge fade-in">🏆 Proven Results</span>
+                        <h1 class="title fade-in">Businesses We've <span class="highlight">Transformed</span></h1>
+                        <p class="subtitle fade-in">Join our growing list of successful pet grooming businesses dominating Google</p>
+                        
+                        <div class="clients-grid fade-in">
+                            <!-- Client 1: London Dog Grooming Co. -->
+                            <div class="client-card">
+                                <div class="sparkle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+                                <div class="sparkle" style="top: 40%; right: 15%; animation-delay: 0.5s;"></div>
+                                <div class="sparkle" style="bottom: 30%; left: 20%; animation-delay: 1s;"></div>
+                                <div class="client-logo">🐕</div>
+                                <h3 class="client-name">London Dog Grooming Co.</h3>
+                                <p class="client-location">📍 London, UK • Battersea & Hammersmith</p>
+                                <div class="client-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <p class="reviews-count">120 Google Reviews</p>
+                                <span class="client-status active">✓ Active Client</span>
+                                <div class="client-services">
+                                    <span class="service-tag">Local SEO</span>
+                                    <span class="service-tag">Google Maps</span>
+                                    <span class="service-tag">Reviews</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Client 2: Hackney Barkers -->
+                            <div class="client-card">
+                                <div class="sparkle" style="top: 15%; right: 10%; animation-delay: 0.3s;"></div>
+                                <div class="sparkle" style="top: 50%; left: 12%; animation-delay: 0.8s;"></div>
+                                <div class="sparkle" style="bottom: 20%; right: 20%; animation-delay: 1.3s;"></div>
+                                <div class="client-logo">🐾</div>
+                                <h3 class="client-name">Hackney Barkers</h3>
+                                <p class="client-location">📍 London, UK • Lower Clapton</p>
+                                <div class="client-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <p class="reviews-count">103 Google Reviews</p>
+                                <span class="client-status active">✓ Active Client</span>
+                                <div class="client-services">
+                                    <span class="service-tag">Full SEO</span>
+                                    <span class="service-tag">Social Media</span>
+                                    <span class="service-tag">YouTube</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Client 3: Agnia's Mobile Cat Grooming -->
+                            <div class="client-card in-discussion">
+                                <div class="sparkle" style="top: 25%; left: 15%; animation-delay: 0.2s;"></div>
+                                <div class="sparkle" style="top: 60%; right: 10%; animation-delay: 0.7s;"></div>
+                                <div class="client-logo">🐱</div>
+                                <h3 class="client-name">Agnia's Mobile Cat Grooming</h3>
+                                <p class="client-location">📍 London, UK • Mobile Service</p>
+                                <div class="client-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.2</span>
+                                </div>
+                                <p class="reviews-count">Growing Reviews</p>
+                                <span class="client-status pending">🔄 In Discussion</span>
+                                <div class="client-services">
+                                    <span class="service-tag">Local SEO</span>
+                                    <span class="service-tag">Google Maps</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card mt-3 fade-in" style="text-align: center; max-width: 600px;">
+                            <h3 style="font-size: 18px; margin-bottom: 12px; font-weight: 700;">
+                                🚀 <span class="highlight">Your business could be next!</span>
+                            </h3>
+                            <p style="font-size: 14px; color: var(--text-muted);">
+                                We specialize in helping pet grooming businesses dominate local search results and grow their customer base.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 10: Contact -->
+            <section class="slide" data-slide="10">
+                <div class="slide-bg"><img src="images/bg-gradient-2.jpg" alt=""></div>
                 <div class="blob blob-1"></div>
                 <div class="blob blob-2"></div>
                 <div class="blob blob-3"></div>
